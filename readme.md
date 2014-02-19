@@ -1,4 +1,4 @@
-[Nix Framework]
+Nix Framework
 ===================================
 
 Nix Framework is a tool for PHP web development.
