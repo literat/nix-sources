@@ -21,8 +21,8 @@ ob_start();
 $startTime = microtime(true);
 require_once dirname(__FILE__) . '/Loaders/NixLoader.php';
 
-$CodeplexLoader = new Nix\Loaders\NixLoader();
-$CodeplexLoader->register();
+$NixLoader = new Nix\Loaders\NixLoader();
+$NixLoader->register();
 
 /**
  * Processes the framework url

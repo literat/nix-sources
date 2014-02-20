@@ -304,7 +304,7 @@ class Router
 
 		return array(
 			'controller' => Tools::camelize($this->routing['controller']),
-			'module' => array_map(array('Codeplex\Utils\Tools', 'camelize'), $this->routing['module']),
+			'module' => array_map(array('Nix\Utils\Tools', 'camelize'), $this->routing['module']),
 			'action' => $this->routing['action'],
 			//'action' => Tools::camelize($this->routing['action']),
 			'service' => Tools::camelize($this->routing['service']),
