@@ -1,11 +1,12 @@
 <?php
 
 /**
- * Object
+ * This file is part of the Nix Framework
  *
- * @author      Tomas Litera 	<tomaslitera@hotmail.com>
- * @version     2014-02-19
- * @package     Nix
+ * Copyright (c) 2014 Tomáš Litera
+ *
+ * For the full copyright and license information, please view
+ * the file license.md that was distributed with this source code.
  */
 
 namespace Nix;
@@ -17,8 +18,8 @@ use Nix;
  *
  * Nix\Object is the ultimate ancestor of all instantiable classes.
  *
- * @created 2014-02-19
  * @author Tomas Litera <tomaslitera@hotmail.com>
+ * @package     Nix
  */ 
 abstract class Object
 {
@@ -68,7 +69,7 @@ abstract class Object
 	}
 
 	/**
-	 * Magic method
+	 * Magic getter method
 	 *
 	 * @throws OutOfBoundsException
 	 * @return mixed
@@ -77,15 +78,15 @@ abstract class Object
 	{
 		if(substr($key, 0, 2) == 'is' && method_exists($this, $key)) {
 			return $this->{$key}();
-		} elseif (method_exists($this, "get$key")) {
+		} elseif(method_exists($this, "get$key")) {
 			return $this->{"get$key"}();
 		} else {
-			throw new OutOfBoundsException("Undefined variable " . $this->getClass() . "::$$key.");
+			throw new \OutOfBoundsException("Undefined variable " . $this->getClass() . "::$$key.");
 		}
 	}
 
 	/**
-	 * Magic method
+	 * Magic setter method
 	 *
 	 * @throws OutOfBoundsException
 	 * @return mixed
@@ -96,9 +97,9 @@ abstract class Object
 			return $this->{"set$key"}($value);
 		} else {
 			if(method_exists($this, "get$key")) {
-				throw new OutOfBoundsException("Variable " . $this->getClass() . "::$$key is read-only.");
+				throw new \OutOfBoundsException("Variable " . $this->getClass() . "::$$key is read-only.");
 			} else {
-				throw new OutOfBoundsException("Undefined variable " . $this->getClass() . "::$$key.");
+				throw new \OutOfBoundsException("Undefined variable " . $this->getClass() . "::$$key.");
 			}
 		}
 	}
@@ -114,19 +115,22 @@ abstract class Object
 	public function __call($method, $args)
 	{
 		if(empty($method)) {
-			throw new Exception("Method name can not be empty.");
+			throw new \Exception("Method name can not be empty.");
 		}
 
 		$method = strtolower($method);
 		$classes = $this->getAncestors($this);
+
 		foreach($classes as $class) {
 			$class = strtolower(get_class($class));
+
 			if(isset(self::$extendMethods[$class][$method])) {
 				array_unshift($args, $this);
+				
 				return call_user_func_array(self::$extendMethods[$class][$method], $args);
 			}
 		}
 
-		throw new BadMethodCallException('Undefined method ' . get_class($this) . "::$method().");
+		throw new \BadMethodCallException('Undefined method ' . get_class($this) . "::$method().");
 	}
 }
