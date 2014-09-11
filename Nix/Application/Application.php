@@ -12,7 +12,7 @@
 namespace Nix\Application;
 
 use Nix,
-	Nix\Obejct,
+	Nix\Object,
 	Nix\Config,
 	Nix\Debugging,
 	Nix\Router,
