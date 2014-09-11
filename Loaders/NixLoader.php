@@ -11,16 +11,15 @@
 
 namespace Nix\Loaders;
 
-use Nix;
-
-require_once dirname(__FILE__) . '/AutoLoader.php';
+use Nix,
+	Nix\Application\Application;
 
 /**
  * NixLoader
  *
  * @author      Tomas Litera 	<tomaslitera@hotmail.com>
  * @version     2014-02-19
- * @package     Codeplex
+ * @package     Nix
  * @subpackage  Loaders
  */
 class NixLoader extends AutoLoader
@@ -28,43 +27,44 @@ class NixLoader extends AutoLoader
 	/** @var array - Available framework classes */
 	protected $classes = array(
 		# application
-		'application'   => 'application/libs/application.php',
+		'application'   => 'Nix/Application/Application.php',
 		'router'        => 'Nix/Routers/Router.php',
-		'apptemplate'   => 'application/libs/app-template.php',
+		'apptemplate'   => 'Nix/Templating/AppTemplate.php',
+		'controller'    => 'App/Controllers/Controller.php',
 		# libs
-		'cache'         => 'libs/cache.php',
-		'config'        => 'libs/config.php',
-		'control'       => 'libs/control.php',
-		'cookie'        => 'libs/cookie.php',
-		'datagrid'      => 'libs/data-grid.php',
-		'debug'         => 'libs/debug.php',
-		'object'        => 'libs/object.php',
-		'form'          => 'libs/form.php',
-		'html'          => 'libs/html.php',
-		'http'          => 'libs/http.php',
-		'l10n'          => 'libs/l10n.php',
-		'paginator'     => 'libs/paginator.php',
-		'session'       => 'libs/session.php',
-		'tools'         => 'libs/tools.php',
+		'cache'         => 'Nix/Caching/Cache.php',
+		'configurator'  => 'Nix/Config/Configurator.php',
+		'control'       => 'Nix/Application/Control.php',
+		'cookie'        => 'Nix/cookie.php',
+		'datagrid'      => 'Nix/data-grid.php',
+		'debugger'      => 'Nix/Debugging/Debugger.php',
+		'object'        => 'Nix/common/Object.php',
+		'form'          => 'Nix/form.php',
+		'html'          => 'Nix/html.php',
+		'http'          => 'Nix/Http/Http.php',
+		'l10n'          => 'Nix/l10n.php',
+		'paginator'     => 'Nix/Utils/Paginator.php',
+		'session'       => 'Nix/Sessions/Session.php',
+		'tools'         => 'Nix/Utils/Tools.php',
 		# templates
-		'itemplate'     => 'libs/itemplate.php',
-		'template'      => 'libs/template.php',
-		'filterhelper'  => 'libs/template/filter-helper.php',
-		'htmlhelper'    => 'libs/template/html-helper.php',
-		'jshelper'      => 'libs/template/js-helper.php',
-		'rsshelper'     => 'libs/template/rss-helper.php',
+		'itemplate'     => 'Nix/Templating/ITemplate.php',
+		'template'      => 'Nix/Templating/Template.php',
+		'filterhelper'  => 'Nix/Templating/Helpers/FilterHelper.php',
+		'htmlhelper'    => 'Nix/Templating/Helpers/HtmlHelper.php',
+		'jshelper'      => 'Nix/Templating/Helpers/JsHelper.php',
+		'rsshelper'     => 'Nix/Templating/Helpers/RssHelper.php',
 		# user
-		'iidentity'     => 'libs/iidentity.php',
-		'identity'      => 'libs/identity.php',
-		'permission'    => 'libs/permission.php',
-		'resource'     => 'libs/permission.php',
-		'permissionassertion'    => 'libs/permission.php',
-		'user'          => 'libs/user.php',
-		'iuserhandler'  => 'libs/user.php',
+		'iidentity'     => 'Nix/iidentity.php',
+		'identity'      => 'Nix/identity.php',
+		'permission'    => 'Nix/permission.php',
+		'resource'      => 'Nix/permission.php',
+		'permissionassertion'    => 'Nix/permission.php',
+		'user'          => 'Nix/user.php',
+		'iuserhandler'  => 'Nix/user.php',
 		# database
-		'db'            => 'libs/db.php',
-		'dbstructure'   => 'libs/db-structure.php',
-		'dbtable'       => 'libs/db-table.php',
+		'db'            => 'Nix/db.php',
+		'dbstructure'   => 'Nix/db-structure.php',
+		'dbtable'       => 'Nix/db-table.php',
 		# loaders
 		'robotloader'   => 'Nix/Loaders/RobotLoader.php',
 	);
@@ -77,19 +77,25 @@ class NixLoader extends AutoLoader
 	 */
 	public function load($class)
 	{
-		$c = strtolower($class);
-		if(strpos($c, 'controller') !== false) {
+		//list($fw, $app, $c) = explode('\\', $class);
+		$class = basename($class);
+		if($class !== 'Controller') {
+			$class = strtolower($class);
+		}
+
+		if(strpos($class, 'controller') !== false) {
 			return Application::get()->loadControllerClass($class);
 		}
 
-		if(isset($this->classes[$c])) {
-			require_once dirname(__FILE__) . '/../../' . $this->classes[$c];
+		if(isset($this->classes[$class])) {
+			require_once dirname(__FILE__) . '/../../' . $this->classes[$class];
 		}
 	}
 
 	/**
 	 * Registers loader
 	 *
+	 * @param void
 	 * @return AutoLoader
 	 */
 	public function register()
