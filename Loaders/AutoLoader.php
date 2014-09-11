@@ -11,9 +11,8 @@
 
 namespace Nix\Loaders;
 
-use Nix;
-
-require_once dirname(__FILE__) . '/../common/Object.php';
+use Nix,
+	Nix\Object;
 
 /**
  * AutoLoader
@@ -23,7 +22,7 @@ require_once dirname(__FILE__) . '/../common/Object.php';
  * @package     Nix
  * @subpackage  Loaders
  */
-abstract class AutoLoader extends Nix\Object
+abstract class AutoLoader extends Object
 {
 	/** @var array */
 	private $callbacks = array();
