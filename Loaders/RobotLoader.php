@@ -11,7 +11,9 @@
 
 namespace Nix\Loaders;
 
-use Nix;
+use Nix,
+	Nix\Caching\Cache,
+	Nix\Utils\Tools;
 
 /**
  * RobotLoader
@@ -69,7 +71,7 @@ class RobotLoader extends AutoLoader
 	public function addDir($dir)
 	{
 		if(!is_dir($dir)) {
-			throw new Exception("Directory '$dir' does not exists.");
+			throw new \Exception("Directory '$dir' does not exists.");
 		}
 
 		$this->dirs[] = $dir;
@@ -101,6 +103,7 @@ class RobotLoader extends AutoLoader
 	/**
 	 * Rebuilds cache list
 	 *
+	 * @param void
 	 * @throws Exception
 	 * @return RobotLoader
 	 */
@@ -115,11 +118,12 @@ class RobotLoader extends AutoLoader
 	/**
 	 * Loads list of cached classes or creates it
 	 *
+	 * @param void
 	 * @return RobotLoader
 	 */
 	public function register()
 	{
-		parent::registerCb(array($this, 'load'));
+		parent::registerCallback(array($this, 'load'));
 		$this->classes = $this->cache->get('robotloader');
 		if($this->classes === null) {
 			$this->rebuild();
@@ -131,6 +135,7 @@ class RobotLoader extends AutoLoader
 	/**
 	 * Returns list of classes
 	 *
+	 * @param void
 	 * @return array
 	 */
 	public function getClasses()
@@ -141,6 +146,7 @@ class RobotLoader extends AutoLoader
 	/**
 	 * Finds all files and theirs classes
 	 *
+	 * @param void
 	 * @return RobotLoader
 	 */
 	private function findClasses()
@@ -149,7 +155,7 @@ class RobotLoader extends AutoLoader
 		$this->classes = array();
 
 		foreach($this->dirs as $dir) {
-			$this->getFiles(new RecursiveDirectoryIterator($dir));
+			$this->getFiles(new \RecursiveDirectoryIterator($dir));
 		}
 
 		foreach($this->files as $file) {
@@ -158,7 +164,7 @@ class RobotLoader extends AutoLoader
 				if(is_array($token)) {
 					if($token[0] == T_CLASS || $token[0] == T_INTERFACE) {
 						$catch = true;
-					} elseif ($token[0] == T_STRING && $catch) {
+					} elseif($token[0] == T_STRING && $catch) {
 						$this->classes[strtolower($token[1])] = Tools::relativePath($file);
 						$catch = false;
 					}
@@ -175,17 +181,19 @@ class RobotLoader extends AutoLoader
 	 * @param RecursiveDirectoryIterator $rdi
 	 * @return RobotLoader
 	 */
-	private function getFiles(& $rdi)
+	private function getFiles($rdi)
 	{
 		$exts = '#\.(' . implode('|', $this->exts) . ')$#i';
-		for ($rdi->rewind(); $rdi->valid(); $rdi->next()) {
-			if ($rdi->isDot())
+		for($rdi->rewind(); $rdi->valid(); $rdi->next()) {
+			if($rdi->isDot()) {
 				continue;
+			}
 
-			if ($rdi->isFile() && preg_match($exts, $rdi->getFilename()))
+			if($rdi->isFile() && preg_match($exts, $rdi->getFilename())) {
 				$this->files[] = $rdi->getPathname();
-			elseif ($rdi->isDir() && !preg_match('#^\.(svn|cvs)$#i', $rdi->getFilename()) && $rdi->hasChildren())
+			} elseif($rdi->isDir() && !preg_match('#^\.(svn|cvs)$#i', $rdi->getFilename()) && $rdi->hasChildren()) {
 				$this->getFiles($rdi->getChildren());
+			}
 		}
 
 		return $this;
