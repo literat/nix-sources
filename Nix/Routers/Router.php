@@ -21,7 +21,6 @@ use Nix,
  * This controller routes all incoming requests to the appropriate controller
  *
  * @author      Tomas Litera    <tomaslitera@hotmail.com>
- * @version     2014-02-19
  * @package     Nix
  * @subpackage  Routers
  */
@@ -177,11 +176,13 @@ class Router
 			unset($routing['__args']);
 		}
  
+ 		// merge all arrays in order that are written
 		$routing = array_merge(
-		array(
-			'controller' => '',
-			'action' => 'index',
-			'module' => array()),
+			array(
+				'controller' => '',
+				'action' => 'index',
+				'module' => array()
+			),
 			$this->defaults,
 			(array) $defaults,
 			$routing
