@@ -14,7 +14,7 @@
 #nixToolbar {
 	position: absolute;
 	right: 5px;
-	top: 5px;
+	bottom: 5px;
 	z-index: 10;
 }
 
