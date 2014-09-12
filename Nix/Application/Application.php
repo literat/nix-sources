@@ -113,7 +113,7 @@ class Application extends Object
 		$this->corePath = rtrim(dirname(dirname(dirname(__FILE__))), '/');
 
 		if($config !== false) {
-			Nix\Config\Config::multiWrite(Nix\Config\Configurator::parseFile($this->path . $config));
+			Nix\Config\Configurator::multiWrite(Nix\Config\Configurator::parseFile($this->path . $config));
 		}
 
 		if(Nix\Config\Configurator::read('cache.storage.relative', true)) {
@@ -184,8 +184,9 @@ class Application extends Object
 	public function loadControllerClass($class)
 	{
 		$class = basename($class);
+
 		//$file = str_replace(array('_-', '_'), array('/', '/'), Nix\Utils\Tools::dash($class));
-		$this->loadFile("Controllers/$class.php");
+		$this->loadFile("controllers/$class.php");
 
 		if(!class_exists('App\Controllers\\'.$class, false)) {
 			throw new ApplicationException('missing-controller', $class);
@@ -201,8 +202,8 @@ class Application extends Object
 	public function autoload($dirs = array())
 	{
 		$autoload = new AutoLoader($this->cache);
-		$autoload->exts = Config::read('autoloader.exts', $autoload->exts);
-		$autoload->autoRebuild = Config::read('core.debug') > 1;
+		$autoload->exts = Configurator::read('autoloader.exts', $autoload->exts);
+		$autoload->autoRebuild = Configurator::read('core.debug') > 1;
 
 		$dirs = (array) $dirs;
 		array_unshift($dirs, "{$this->path}/extends/");
@@ -237,6 +238,7 @@ class Application extends Object
 
 		$this->loadControllerClass($class);
 		$this->controller = new $class();
+
 		echo $this->controller->render();
 	}
 
@@ -360,8 +362,7 @@ class Application extends Object
 		try {
 			$this->loadControllerClass('AppController');
 		} catch (ApplicationException $e) {
-			var_dump($e);
-		//	eval('class AppController extends Controller {}');
+			eval('class AppController extends Controller {}');
 		}
 	}
 }
