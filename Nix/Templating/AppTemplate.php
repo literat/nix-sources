@@ -12,7 +12,7 @@
 namespace Nix\Templating;
 
 use Nix,
-	Nix\Tmeplating\Template,
+	Nix\Templating\Template,
 	Nix\Application\Application,
 	Nix\Caching\Cache,
 	Nix\Http\Http;
