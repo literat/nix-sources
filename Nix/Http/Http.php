@@ -45,7 +45,8 @@ class Http
 	{
 		self::sanitizeData();
 		self::$domain = $_SERVER['SERVER_NAME'];
-		self::$serverURL = 'http' . (@$_SERVER['HTTPS'] ? 's' : '') . '://' . self::$domain;
+		// use http or secure https
+		self::$serverURL = 'http' . ($_SERVER['HTTPS'] == 'on' ? 's' : '') . '://' . self::$domain;
 
 		$base = trim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 		if(!empty($base)) {
