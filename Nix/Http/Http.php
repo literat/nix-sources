@@ -11,13 +11,14 @@
 
 namespace Nix\Http;
 
-use Nix;
+use Nix,
+	Nix\Http\Request,
+	Nix\Http\Response;
 
 /**
  * Http
  *
  * @author      Tomas Litera    <tomaslitera@hotmail.com>
- * @version     2014-02-19
  * @package     Nix
  * @subpackage  Http
  */
