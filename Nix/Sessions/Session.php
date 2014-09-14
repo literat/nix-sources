@@ -204,7 +204,7 @@ class Session
 	 */
 	public static function init()
 	{
-		self::$name = 'haefko-session';
+		self::$name = 'nix-session';
 		self::$lifeTime = 259200; # 3 days
 		self::$path = Nix\Http\Http::$baseURL . '/';
 		self::$domain = Nix\Http\Http::$domain;
