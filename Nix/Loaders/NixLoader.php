@@ -18,7 +18,6 @@ use Nix,
  * NixLoader
  *
  * @author      Tomas Litera 	<tomaslitera@hotmail.com>
- * @version     2014-02-19
  * @package     Nix
  * @subpackage  Loaders
  */
@@ -31,42 +30,70 @@ class NixLoader extends AutoLoader
 		'router'        => 'Nix/Routers/Router.php',
 		'apptemplate'   => 'Nix/Templating/AppTemplate.php',
 		'controller'    => 'App/Controllers/Controller.php',
+		'control'       => 'Nix/Application/Control.php',
+		# loaders
+		'robotloader'   => 'Nix/Loaders/RobotLoader.php',
 		# libs
 		'cache'         => 'Nix/Caching/Cache.php',
 		'configurator'  => 'Nix/Config/Configurator.php',
-		'control'       => 'Nix/Application/Control.php',
 		'cookie'        => 'Nix/cookie.php',
 		'datagrid'      => 'Nix/data-grid.php',
 		'debugger'      => 'Nix/Debugging/Debugger.php',
 		'object'        => 'Nix/common/Object.php',
-		'form'          => 'Nix/form.php',
-		'html'          => 'Nix/html.php',
-		'http'          => 'Nix/Http/Http.php',
 		'l10n'          => 'Nix/l10n.php',
-		'paginator'     => 'Nix/Utils/Paginator.php',
 		'session'       => 'Nix/Sessions/Session.php',
+		#utils
 		'tools'         => 'Nix/Utils/Tools.php',
-		# templates
+		'paginator'     => 'Nix/Utils/Paginator.php',
+		#http
+		'http'          => 'Nix/Http/Http.php',
+		'request'       => 'Nix/Http/Request.php',
+		'response'      => 'Nix/Http/Response.php',
+		# templating
 		'itemplate'     => 'Nix/Templating/ITemplate.php',
 		'template'      => 'Nix/Templating/Template.php',
 		'filterhelper'  => 'Nix/Templating/Helpers/FilterHelper.php',
 		'htmlhelper'    => 'Nix/Templating/Helpers/HtmlHelper.php',
 		'jshelper'      => 'Nix/Templating/Helpers/JsHelper.php',
 		'rsshelper'     => 'Nix/Templating/Helpers/RssHelper.php',
-		# user
-		'iidentity'     => 'Nix/iidentity.php',
-		'identity'      => 'Nix/identity.php',
-		'permission'    => 'Nix/permission.php',
-		'resource'      => 'Nix/permission.php',
-		'permissionassertion'    => 'Nix/permission.php',
-		'user'          => 'Nix/user.php',
-		'iuserhandler'  => 'Nix/user.php',
+		# permissions
+		'iidentity'			  => 'Nix/Permissions/IIdentity.php',
+		'identity'			  => 'Nix/Permissions/Identity.php',
+		'permission'		  => 'Nix/Permissions/Permission.php',
+		'resource'			  => 'Nix/Permissions/Resource.php',
+		'permissionrole'      => 'Nix/Permissions/PermissionRole.php',
+		'permissionassertion' => 'Nix/Permissions/PermissionAssertion.php',
+		'user'				  => 'Nix/Permissions/User.php',
+		'iuserhandler'		  => 'Nix/Permissions/IUserHandler.php',
 		# database
 		'db'            => 'Nix/db.php',
 		'dbstructure'   => 'Nix/db-structure.php',
 		'dbtable'       => 'Nix/db-table.php',
-		# loaders
-		'robotloader'   => 'Nix/Loaders/RobotLoader.php',
+		# forms
+		'form'          => 'Nix/Forms/Form.php',
+		'html'          => 'Nix/Forms/Html.php',
+		'condition'		=> 'Nix/Forms/Condition.php',
+		'rule'			=> 'Nix/Forms/Rule.php',
+		## controls
+		'formcontrol'		=> 'Nix/Forms/Controls/FormControl.php',
+		'text'				=> 'Nix/Forms/Controls/Text.php',
+		'input'				=> 'Nix/Forms/Controls/Input.php',
+		'hidden'			=> 'Nix/Forms/Controls/Hidden.php',
+		'datepicker'		=> 'Nix/Forms/Controls/Datepicker.php',
+		'password'			=> 'Nix/Forms/Controls/Password.php',
+		'textarea'			=> 'Nix/Forms/Controls/Textarea.php',
+		'radio'				=> 'Nix/Forms/Controls/Radio.php',
+		'select'			=> 'Nix/Forms/Controls/Select.php',
+		'checkbox'			=> 'Nix/Forms/Controls/Checkbox.php',
+		'button'			=> 'Nix/Forms/Controls/Button.php',
+		'submit'			=> 'Nix/Forms/Controls/Submit.php',
+		'reset'				=> 'Nix/Forms/Controls/Reset.php',
+		'multicheckbox'		=> 'Nix/Forms/Controls/MultiCheckbox.php',
+		'multipleselect'	=> 'Nix/Forms/Controls/MultipleSelect.php',
+		'datepicker'		=> 'Nix/Forms/Controls/Datepicker.php',
+		'file'				=> 'Nix/Forms/Controls/File.php',
+		'uploadedfile'		=> 'Nix/Forms/Controls/UploadedFile.php',
+		## renderers
 	);
 
 	/**
