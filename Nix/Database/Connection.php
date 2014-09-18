@@ -117,7 +117,7 @@ class Connection extends Nix\Object
 	/**
 	 * Wrapper for called result
 	 * 
-	 * @see DbResult::fetch()
+	 * @see Result::fetch()
 	 * @param string $args sql query
 	 * @return mixed
 	 */
