@@ -71,6 +71,8 @@ class Debugger
 
 			$init = true;
 		}
+
+		require_once __DIR__ . '/shortcuts.php';
 	}
 
 
@@ -275,6 +277,7 @@ class Debugger
 		}
 
 		# redirect content to firebug
+		//TODO: something here is non-object
 		if((Configurator::read('debug.logto') == 'firebug' || Http::$request->isAjax) && self::$isFirebug) {
 			return self::fireSend(is_string($message) ? strip_tags($message) : $message);
 		}
@@ -363,17 +366,6 @@ if(!isset($startTime)) {
 }
 
 Debugger::init();
-
-/**
- * Wrapper for Debug::dump()
- *
- * @see Debug::dump();
- */
-function dump($var)
-{
-	$args = func_get_args();
-	return Debugger::dump($var);
-}
 
 class FatalErrorException extends \Exception
 {
