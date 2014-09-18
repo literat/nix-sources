@@ -11,7 +11,8 @@
 
 namespace Nix\Database;
 
-use Nix\Database\Connection;
+use Nix\Database\Connection,
+	Nix\Config\Configurator;
 
 /**
  * Database class
@@ -67,7 +68,7 @@ class Db
 		}
 
 		if(empty($config) && class_exists('Config', false)) {
-			$config = Config::read('db.connection');
+			$config = Configurator::read('db.connection');
 		}
 
 		self::$connections[$name] = new Connection($config);
