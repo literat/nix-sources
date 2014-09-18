@@ -66,9 +66,16 @@ class NixLoader extends AutoLoader
 		'user'				  => 'Nix/Permissions/User.php',
 		'iuserhandler'		  => 'Nix/Permissions/IUserHandler.php',
 		# database
-		'db'            => 'Nix/db.php',
-		'dbstructure'   => 'Nix/db-structure.php',
-		'dbtable'       => 'Nix/db-table.php',
+		'db'            	=> 'Nix/Database/Db.php',
+		'structure'			=> 'Nix/Database/Structure.php',
+		'table'      		=> 'Nix/Database/Table.php',
+		'connection'		=> 'Nix/Database/Connection.php',
+		'result'			=> 'Nix/Database/Result.php',
+		'resultnode'		=> 'Nix/Database/ResultNode.php',
+		'preparedresult'	=> 'Nix/Database/PreparedResult.php',
+		## drivers
+		'idriver'		=> 'Nix/Database/IDriver.php',
+		'mysqlidriver'	=> 'Nix/Database/Drivers/MysqliDriver.php',
 		# forms
 		'form'          => 'Nix/Forms/Form.php',
 		'html'          => 'Nix/Forms/Html.php',
