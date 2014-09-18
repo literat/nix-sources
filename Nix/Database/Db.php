@@ -56,7 +56,6 @@ class Db
 	 * Connects to database
 	 * 
 	 * If you don't provide $config, its load from config directive Db.connection
-	 * @link http://haefko.skrasek.com/database
 	 * @param array $config connection config
 	 * @param string $name connection name
 	 * @return bool
@@ -96,7 +95,7 @@ class Db
 	 * 
 	 * @see Connection::rawPrepare()
 	 * @param string $sql sql query
-	 * @return DbResult
+	 * @return Result
 	 */
 	public static function execute($sql)
 	{
@@ -110,7 +109,7 @@ class Db
 	 * 
 	 * @see Connection::prepare()
 	 * @param string $sql sql query
-	 * @return DbPreparedResult
+	 * @return PreparedResult
 	 */
 	public static function prepare($sql)
 	{
@@ -124,7 +123,7 @@ class Db
 	 * 
 	 * @see Connection::query()
 	 * @param string $sql sql query
-	 * @return DbResult
+	 * @return Result
 	 */
 	public static function query($sql)
 	{
@@ -212,7 +211,7 @@ class Db
 			return;
 		}
 
-		if (Configurator::read('db.debug', 1) == 0) {
+		if(Configurator::read('db.debug', 1) == 0) {
 			return;
 		}
 
