@@ -101,6 +101,12 @@ class NixLoader extends AutoLoader
 		'file'				=> 'Nix/Forms/Controls/File.php',
 		'uploadedfile'		=> 'Nix/Forms/Controls/UploadedFile.php',
 		## renderers
+		'iformrenderer'		=> 'Nix/Forms/Renderers/IFormRenderer.php',
+		'formrenderer'		=> 'Nix/Forms/Renderers/FormRenderer.php',
+		'emptyrenderer'		=> 'Nix/Forms/Renderers/EmptyRenderer.php',
+		'dlrenderer'		=> 'Nix/Forms/Renderers/DlRenderer.php',
+		'divrenderer'		=> 'Nix/Forms/Renderers/DivRenderer.php',
+		'tablerenderer'		=> 'Nix/Forms/Renderers/TableRenderer.php',
 	);
 
 	/**
