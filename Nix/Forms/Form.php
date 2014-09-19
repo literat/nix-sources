@@ -28,6 +28,7 @@ use Nix,
 	Nix\Forms\Controls\File,
 	Nix\Forms\Controls\UploadedFile,
 	Nix\Forms\Controls\Hidden,
+	Nix\Forms\Renderers,
 	Nix\Debugging\Debugger;
 
 /**
@@ -465,9 +466,10 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 
 			$this->renderer = $renderer;
 		} else {
+			$renderer = ucfirst($renderer);
 			$name = Tools::dash($renderer);
-			require_once dirname(__FILE__) . "/Renderers/form-$name-renderer.php";
-			$class= "Form{$renderer}Renderer";
+			require_once dirname(__FILE__) . "/Renderers/" . $name . "Renderer.php";
+			$class= "Nix\Forms\Renderers\\" . $renderer . "Renderer";
 			$this->renderer = new $class();
 		}
 
