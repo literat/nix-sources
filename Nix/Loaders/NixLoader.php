@@ -36,7 +36,7 @@ class NixLoader extends AutoLoader
 		# libs
 		'cache'         => 'Nix/Caching/Cache.php',
 		'configurator'  => 'Nix/Config/Configurator.php',
-		'cookie'        => 'Nix/cookie.php',
+		'cookie'        => 'Nix/Sessions/Cookie.php',
 		'datagrid'      => 'Nix/data-grid.php',
 		'debugger'      => 'Nix/Debugging/Debugger.php',
 		'object'        => 'Nix/common/Object.php',
