@@ -107,6 +107,8 @@ class NixLoader extends AutoLoader
 		'dlrenderer'		=> 'Nix/Forms/Renderers/DlRenderer.php',
 		'divrenderer'		=> 'Nix/Forms/Renderers/DivRenderer.php',
 		'tablerenderer'		=> 'Nix/Forms/Renderers/TableRenderer.php',
+		### jsvalidators
+		'ijsvalidator'		=> 'Nix/Forms/Renderers/JsValidators/IJsValidator.php'
 	);
 
 	/**

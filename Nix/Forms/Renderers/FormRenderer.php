@@ -86,8 +86,8 @@ abstract class FormRenderer extends Nix\Object implements IFormRenderer
 			$this->javascript = $validator;
 		} else {
 			$name = Tools::dash($validator);
-			require_once dirname(__FILE__) . "/javascript/form-$name-js-validator.php";
-			$class= "Form{$validator}JsValidator";
+			require_once dirname(__FILE__) . "/JsValidators/$name" . "JsValidator.php";
+			$class= "Nix\Forms\JsValidators\\" . $validator . "JsValidator";
 			$this->javascript = new $class();
 		}
 
