@@ -12,7 +12,7 @@
 ?>
 <style type="text/css">
 #nixToolbar {
-	position: absolute;
+	position: fixed;
 	right: 5px;
 	bottom: 5px;
 	z-index: 10;
