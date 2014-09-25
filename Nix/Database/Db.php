@@ -12,7 +12,8 @@
 namespace Nix\Database;
 
 use Nix\Database\Connection,
-	Nix\Config\Configurator;
+	Nix\Config\Configurator,
+	Nix\Debugging\Debugger;
 
 /**
  * Database class
@@ -208,7 +209,7 @@ class Db
 	 */
 	public static function debug($sql, $time)
 	{
-		if(!class_exists('Config', false) || !class_exists('Debug', false)) {
+		if(!class_exists('Nix\Config\Configurator', false) || !class_exists('Nix\Debugging\Debugger', false)) {
 			return;
 		}
 
@@ -216,7 +217,7 @@ class Db
 			return;
 		}
 
-		$abbr = 'time: ' . Debug::getTime($time) . 'ms; affected: ' . self::affectedRows();
+		$abbr = 'time: ' . Debugger::getTime($time) . 'ms; affected: ' . self::affectedRows();
 		$text = "<abbr title=\"$abbr\">" . htmlspecialchars($sql) . '</abbr>';
 		Debugger::toolbar($text, 'sql');
 	}
