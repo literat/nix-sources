@@ -39,7 +39,7 @@ class MysqliDriver extends Nix\Object implements IDriver
 	 */	
 	public function connect($config)
 	{
-		$this->connection = @new \mysqli($config['server'], $config['username'], $config['password'], $config['database']);
+		$this->connection = new \mysqli($config['server'], $config['username'], $config['password'], $config['database']);
 
 		if(mysqli_connect_errno()) {
 			throw new \Exception(mysqli_connect_error());
@@ -60,7 +60,7 @@ class MysqliDriver extends Nix\Object implements IDriver
 		$this->result = $this->connection->query($sql);
 
 		if($this->connection->errno) {
-			throw new Exception($this->connection->error . " ($sql).");
+			throw new \Exception($this->connection->error . " ($sql).");
 		}
 
 		return clone $this;
