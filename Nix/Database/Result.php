@@ -12,6 +12,7 @@
 namespace Nix\Database;
 
 use Nix,
+	Nix\Database\Db,
 	Nix\Database\ResultNode,
 	Nix\Database\IDriver;
 
@@ -73,6 +74,7 @@ class Result extends Nix\Object implements \Countable, \IteratorAggregate
 	{
 		$this->runSqlQuery();
 		$this->loadResultColumns();
+
 		return $this;
 	}
 
@@ -222,6 +224,7 @@ class Result extends Nix\Object implements \Countable, \IteratorAggregate
 		$time = microtime(true);
 		$this->driver = $this->driver->query($this->query);
 		$this->executed = true;
+
 		Db::debug($this->query, $time);
 	}
 
