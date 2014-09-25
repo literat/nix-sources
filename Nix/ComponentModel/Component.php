@@ -8,7 +8,10 @@
  *
  * @created 2012-12-16
  * @author Tomas Litera <tomaslitera@hotmail.com>
- */ 
+ */
+
+use Nix\Database\Db;
+
 abstract class Component implements IComponent
 {
 	/** Table in Database */
@@ -49,12 +52,12 @@ abstract class Component implements IComponent
 			$query_value_set .= "'".$value."',";
 		}
 		$query_key_set = substr($query_key_set, 0, -1);
-		$query_value_set = substr($query_value_set, 0, -1);	
+		$query_value_set = substr($query_value_set, 0, -1);
 
-    	$query = "INSERT INTO `".$this->dbTable."` 
-     				 (".$query_key_set.") 
-     				 VALUES (".$query_value_set.");";
-    	$result = mysql_query($query);
+		$query = "INSERT INTO `".$this->dbTable."` 
+					 (".$query_key_set.") 
+					 VALUES (".$query_value_set.");";
+		$result = mysql_query($query);
 
 		return $result;	
 	}
@@ -69,15 +72,15 @@ abstract class Component implements IComponent
 	public function update($id, array $db_data)
 	{
 		$query_set = "";
-	 	foreach($db_data as $key => $value) {
+		foreach($db_data as $key => $value) {
 			$query_set .= "`".$key."` = '".$value."',";	
 		}
-	 	$query_set = substr($query_set, 0, -1);	
+		$query_set = substr($query_set, 0, -1);	
 		
-    	$query = "UPDATE `".$this->dbTable."` 
+		$query = "UPDATE `".$this->dbTable."` 
 					SET ".$query_set."
 					WHERE `id`='".$id."' LIMIT 1";
-    	$result = mysql_query($query);
+		$result = mysql_query($query);
 		
 		return $result;
 	}
@@ -90,9 +93,9 @@ abstract class Component implements IComponent
 	 */
 	public function delete($id)
 	{
-    	$query = "UPDATE ".$this->dbTable." SET deleted = '1' WHERE id IN (".$id.")";
-	    $result = mysql_query($query);
-		
+		$query = Db::prepare('update ['.$this->dbTable.'] set [deleted] = "1" where [id] in ('.$id.')');
+		$result = $query->execute();
+
 		return $result;
 	}
 	
