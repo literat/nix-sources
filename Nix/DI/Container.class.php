@@ -32,7 +32,7 @@ class Container
 	 */
 	public function createPHPMailer()
 	{
-		return new PHPMailer();
+		return new \PHPMailer();
 	}
 	
 	/**
@@ -42,7 +42,7 @@ class Container
 	 */
 	public function createPHPMailerFactory()
 	{
-		return new PHPMailerFactory($this->createPHPMailer(), $this->configuration);
+		return new \PHPMailerFactory($this->createPHPMailer(), $this->configuration);
 	}
 	
 	/**
@@ -52,7 +52,7 @@ class Container
 	 */
 	public function createPdfFactory()
 	{
-		return new PdfFactory();
+		return new \PdfFactory();
 	}
 	
 	/**
@@ -62,7 +62,7 @@ class Container
 	 */
 	public function createExcelFactory()
 	{
-		return new ExcelFactory();
+		return new \ExcelFactory();
 	}
 	
 	/**
@@ -72,7 +72,7 @@ class Container
 	 */
 	public function createEmailer()
 	{
-		return new Emailer($this->createPHPMailerFactory());
+		return new Nix\Mail\Emailer($this->createPHPMailerFactory());
 	}
 	
 	/**
@@ -82,7 +82,7 @@ class Container
 	 */
 	public function createView()
 	{
-		return new View();
+		return new \View();
 	}
 	
 	/**
@@ -92,7 +92,7 @@ class Container
 	 */
 	public function createVisitor()
 	{
-		return new VisitorModel(
+		return new \VisitorModel(
 			$this->meetingId,
 			$this->createEmailer(),
 			$this->createMeeting(),
@@ -110,7 +110,7 @@ class Container
 	 */
 	public function createMeeting()
 	{
-		return new MeetingModel($this->meetingId, $this->configuration);
+		return new \MeetingModel($this->meetingId, $this->configuration);
 	}
 	
 	/**
@@ -120,7 +120,7 @@ class Container
 	 */
 	public function createProgram()
 	{
-		return new ProgramModel($this->meetingId, $this->configuration);
+		return new \ProgramModel($this->meetingId, $this->configuration);
 	}
 	
 	/**
@@ -130,7 +130,7 @@ class Container
 	 */
 	public function createMeal()
 	{
-		return new MealModel($this->meetingId);
+		return new \MealModel($this->meetingId);
 	}
 	
 	/**
@@ -140,7 +140,7 @@ class Container
 	 */
 	public function createBlock()
 	{
-		return new BlockModel($this->meetingId);
+		return new \BlockModel($this->meetingId);
 	}
 
 	/**
@@ -150,7 +150,7 @@ class Container
 	 */
 	public function createCategory()
 	{
-		return new CategoryModel();
+		return new \CategoryModel();
 	}
 	
 	/**
@@ -160,7 +160,7 @@ class Container
 	 */
 	public function createExport()
 	{
-		return new ExportModel($this->meetingId, $this->createPdfFactory(), $this->createView(), $this->createProgram(), $this->createExcelFactory());
+		return new \ExportModel($this->meetingId, $this->createPdfFactory(), $this->createView(), $this->createProgram(), $this->createExcelFactory());
 	}
 
 	/**
@@ -170,6 +170,6 @@ class Container
 	 */
 	public function createSettings()
 	{
-		return new SettingsModel();
+		return new \SettingsModel();
 	}
 }
