@@ -25,6 +25,7 @@ use Nix,
 	Nix\Forms\Controls\MultiCheckbox,
 	Nix\Forms\Controls\Submit,
 	Nix\Forms\Controls\Datepicker,
+	Nix\Forms\Controls\DateTimepicker,
 	Nix\Forms\Controls\File,
 	Nix\Forms\Controls\UploadedFile,
 	Nix\Forms\Controls\Hidden,
@@ -187,6 +188,20 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	public function addDatepicker($control, $label = null)
 	{
 		$this[$control] = new Datepicker($this, $control, $label);
+
+		return $this;
+	}
+
+	/**
+	 * Adds datetimepicker input
+	 *
+	 * @param string $control control name
+	 * @param mixed $label label (null = from name, false = no label)
+	 * @return Form
+	 */
+	public function addDateTimepicker($control, $label = null)
+	{
+		$this[$control] = new DateTimepicker($this, $control, $label);
 
 		return $this;
 	}

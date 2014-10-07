@@ -194,6 +194,11 @@ abstract class Table extends Nix\Object
 					}
 					break;
 				case 'datetime':
+					$form->addDateTimepicker($name, $label);
+					if(!$data['null']) {
+						$form[$name]->addRule(Rule::FILLED);
+					}
+					break;
 				case 'time':
 					$form->addText($name, $label);
 					if(!$data['null']) {
