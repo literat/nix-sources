@@ -1,4 +1,7 @@
 <?php
+
+namespace Nix\Mail;
+
 /**
  * Emailer
  *
