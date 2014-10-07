@@ -44,12 +44,13 @@ class Configurator
 
 			if(isset($val[$server])) {
 				self::multiWrite($val[$server]);
-			} elseif(class_exists('Debug', false) && self::read('core.debug') > 0) {
+			} elseif(class_exists('Nix\Debugging\Debugger', false) && self::read('core.debug') > 0) {
 				Debugger::log("Undefined server configuration for '$server'.");
 			}
 		} else {
 			$levels = explode('.', $key);
 			$level = & self::$config;
+
 			foreach($levels as $name) {
 				if(!isset($level[$name])) {
 					$level[$name] = array();
@@ -109,7 +110,7 @@ class Configurator
 	public static function parseFile($file)
 	{
 		if(!is_file($file)) {
-			throw new RuntimeException("Missing configuration file '$file'.");
+			throw new \RuntimeException("Missing configuration file '$file'.");
 		}
 
 		$data = trim(file_get_contents($file));

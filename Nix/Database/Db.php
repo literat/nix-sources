@@ -68,7 +68,7 @@ class Db
 			self::$active[$name];
 		}
 
-		if(empty($config) && class_exists('Config', false)) {
+		if(empty($config) && class_exists('Nix\Config\Configurator', false)) {
 			$config = Configurator::read('db.connection');
 		}
 

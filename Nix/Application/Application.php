@@ -59,7 +59,7 @@ class Application extends Object
 	public static function get()
 	{
 		if(empty(self::$self)) {
-			throw new Exception ('Application hasn\'t been alerady created.');
+			throw new \Exception ('Application hasn\'t been alerady created.');
 		}
 
 		return self::$self;
@@ -104,7 +104,7 @@ class Application extends Object
 	public function __construct($path = '/app', $config = '/config.yml')
 	{
 		if(!empty(self::$self)) {
-			throw new Exception('You can not create more then 1 instance of Application class.');
+			throw new \Exception('You can not create more then 1 instance of Application class.');
 		}
 
 		self::$self = & $this;
@@ -117,7 +117,7 @@ class Application extends Object
 		}
 
 		if(Nix\Config\Configurator::read('cache.storage.relative', true)) {
-			$cachePath = $this->path . Nix\Config\Configurator::read('cache.storage.path', '/temp/');
+			$cachePath = $this->path . Nix\Config\Configurator::read('cache.storage.path', '/../temp/cache/');
 		} else {
 			$cachePath = Nix\Config\Configurator::read('cache.storage.path');
 		}
@@ -385,7 +385,7 @@ class ApplicationException extends \Exception
 	{
 		static $errors = array('routing', 'missing-controller', 'missing-method', 'missing-template', 'missing-helper', 'missing-file');
 		if(!in_array($errorType, $errors)) {
-			throw new Exception("Unsupported ApplicationException type '$error'.");
+			throw new \Exception("Unsupported ApplicationException type '$error'.");
 		}
 
 		$this->errorFile = $errorType;
