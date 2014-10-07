@@ -1,4 +1,7 @@
 <?php
+
+namespace Nix\Exporting;
+
 /**
  * PdfFactory
  *
