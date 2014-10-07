@@ -1,4 +1,7 @@
 <?php
+
+namespace Nix\DI;
+
 /**
  * Container
  *
