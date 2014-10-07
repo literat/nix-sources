@@ -1,5 +1,9 @@
 <?php
 
+namespace Nix;
+
+use Nix;
+
 /**
  * IComponent
  *
@@ -7,8 +11,8 @@
  *
  * @created 2012-12-16
  * @author Tomas Litera <tomaslitera@hotmail.com>
- */ 
-interface IComponent extends IModel
+ */
+interface IComponent extends Nix\IModel
 {
 	/**
 	 * Create a new record

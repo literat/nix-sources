@@ -1,5 +1,9 @@
 <?php
 
+namespace Nix;
+
+use Nix;
+
 /**
  * NixModel
  *
@@ -9,7 +13,7 @@
  * @copyright   2013-03-11      Tomas Litera
  * @version     1.0
  */ 
-abstract class NixModel implements IModel
+abstract class NixModel implements Nix\IModel
 {
 	/** @var logfile */
     public $logfile = 'NixModel.class.log';

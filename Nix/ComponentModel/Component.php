@@ -10,9 +10,12 @@
  * @author Tomas Litera <tomaslitera@hotmail.com>
  */
 
-use Nix\Database\Db;
+namespace Nix;
 
-abstract class Component implements IComponent
+use Nix,
+	Nix\Database\Db;
+
+abstract class Component implements Nix\IComponent
 {
 	/** Table in Database */
 	protected $dbTable;
@@ -22,7 +25,7 @@ abstract class Component implements IComponent
 	{
 		$this->dbTable = $dbTable;
 	}
-	
+
 	/**
 	 * Create new or return existing instance of class
 	 *
@@ -35,7 +38,7 @@ abstract class Component implements IComponent
 		}
 		return self::$instance;
 	}	
-	
+
 	/**
 	 * Create a new record
 	 *
@@ -73,14 +76,12 @@ abstract class Component implements IComponent
 	{
 		$query_set = "";
 		foreach($db_data as $key => $value) {
-			$query_set .= "`".$key."` = '".$value."',";	
+			$query_set .= "[".$key."] = '".$value."',";
 		}
 		$query_set = substr($query_set, 0, -1);	
-		
-		$query = "UPDATE `".$this->dbTable."` 
-					SET ".$query_set."
-					WHERE `id`='".$id."' LIMIT 1";
-		$result = mysql_query($query);
+
+		$query = Db::prepare('UPDATE ['.$this->dbTable.'] SET '.$query_set.' WHERE [id] = "'.$id.'" LIMIT 1');
+		$result = $query->execute();
 		
 		return $result;
 	}
