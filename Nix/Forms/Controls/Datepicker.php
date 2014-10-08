@@ -59,6 +59,6 @@ class Datepicker extends Input
 	{
 		$control = parent::getHtmlControl();
 	
-		return $control->class('calendar');
+		return $control->class('datePicker');
 	}
 }
