@@ -13,6 +13,7 @@ namespace Nix\Templating\Helpers;
 
 use Nix,
 	Nix\Templating\Template;
+use Nix\Forms\Html;
 
 /**
  * HtmlHelper
