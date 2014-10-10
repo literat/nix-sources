@@ -26,7 +26,9 @@ class NixLoader extends AutoLoader
 	/** @var array - Available framework classes */
 	protected $classes = array(
 		# application
-		'application'   => 'Nix/Application/Application.php',
+		'application'   		=> 'Nix/Application/Application.php',
+		'applicationexception'	=> 'Nix/Application/ApplicationException.php',
+		'applicationerror'   	=> 'Nix/Application/ApplicationError.php',
 		'router'        => 'Nix/Routers/Router.php',
 		'apptemplate'   => 'Nix/Templating/AppTemplate.php',
 		'controller'    => 'App/Controllers/Controller.php',
