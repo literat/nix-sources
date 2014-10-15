@@ -90,6 +90,7 @@ class NixLoader extends AutoLoader
 		'hidden'			=> 'Nix/Forms/Controls/Hidden.php',
 		'datepicker'		=> 'Nix/Forms/Controls/Datepicker.php',
 		'datetimepicker'	=> 'Nix/Forms/Controls/DateTimepicker.php',
+		'colorpicker'		=> 'Nix/Forms/Controls/Colorpicker.php',
 		'password'			=> 'Nix/Forms/Controls/Password.php',
 		'textarea'			=> 'Nix/Forms/Controls/Textarea.php',
 		'radio'				=> 'Nix/Forms/Controls/Radio.php',
