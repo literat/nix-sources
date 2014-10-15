@@ -31,7 +31,7 @@ class NixLoader extends AutoLoader
 		'applicationerror'   	=> 'Nix/Application/ApplicationError.php',
 		'router'        => 'Nix/Routers/Router.php',
 		'apptemplate'   => 'Nix/Templating/AppTemplate.php',
-		'controller'    => 'App/Controllers/Controller.php',
+		'controller'    => 'Nix/Application/Controller.php',
 		'control'       => 'Nix/Application/Control.php',
 		# loaders
 		'robotloader'   => 'Nix/Loaders/RobotLoader.php',
