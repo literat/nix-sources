@@ -510,7 +510,7 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	 */
 	public function getRenderer()
 	{
-		if(!($this->renderer instanceof IFormRenderer)) {
+		if(!($this->renderer instanceof Nix\Forms\Renderers\IFormRenderer)) {
 			$this->setRenderer('table');
 		}
 
