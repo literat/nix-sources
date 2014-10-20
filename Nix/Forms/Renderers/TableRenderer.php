@@ -74,9 +74,9 @@ class TableRenderer extends FormRenderer
 	/**
 	 * Prepares label
 	 * 
-	 * @param Html $wrapper
-	 * @param FormControl $contrl
-	 * @return Html
+	 * @param 	Html 		$wrapper 	wrapper
+	 * @param 	FormControl $control 	form control
+	 * @return 	Html
 	 */
 	protected function prepareLabel($wrapper, $control)
 	{

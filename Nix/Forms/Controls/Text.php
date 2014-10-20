@@ -22,7 +22,7 @@ use Nix\Forms\Controls\Input;
  */
 class Text extends Input
 {
-	/** @var array */
+	/** @var array of filters */
 	protected $filters = array('trim');
 
 	/**

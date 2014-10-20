@@ -23,7 +23,7 @@ use Nix\Forms\Rule,
  */
 class Condition extends Rule
 {
-	/** @var array */
+	/** @var array of rules */
 	public $rules = array();
 
 	/**

@@ -23,7 +23,7 @@ use Nix\Forms\Html,
  */
 class Select extends FormControl
 {
-	/** @var array */
+	/** @var array options */
 	protected $options = array();
 
 	/** @var array - Options without tree structure */

@@ -28,10 +28,10 @@ class JqueryJsValidator extends Nix\Object implements IJsValidator
 	/** @var string - Form name */
 	protected $name;
 
-	/** @var array */
+	/** @var array of rules */
 	protected $rules;
 
-	/** @var array */
+	/** @var array of conditions */
 	protected $conditions;
 
 	/**
@@ -89,8 +89,8 @@ class JqueryJsValidator extends Nix\Object implements IJsValidator
 	/**
 	 * Transforms rule to array
 	 * 
-	 * @param   Rule  $rule
-	 * @param   bool  add message?
+	 * @param   Rule  $rule 		rule
+	 * @param   bool  $withMessage 	add message?
 	 * @return  array
 	 */
 	protected function getRule(Rule $rule, $withMessage = false)

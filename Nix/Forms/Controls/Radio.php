@@ -27,7 +27,7 @@ class Radio extends Input
 	/** @var string - Control separator */
 	public $listSeparator = '<br />';
 
-	/** @var array */
+	/** @var array - Options */
 	protected $options = array();
 
 	/** @var array - Options without tree structure */

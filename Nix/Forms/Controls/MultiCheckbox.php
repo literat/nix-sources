@@ -26,7 +26,7 @@ class MultiCheckbox extends Input
 	/** @var string - Control separator */
 	public $listSeparator = '<br />';
 
-	/** @var array */
+	/** @var array of options */
 	protected $options = array();
 
 	/**
