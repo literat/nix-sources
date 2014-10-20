@@ -45,13 +45,13 @@ class Db
 	const A_MULTI_VALUES = 'm';
 	/***/
 
-	/** @var array */
+	/** @var array of sqls */
 	public static $sqls = array();
 
-	/** @var string */
+	/** @var string is active */
 	private static $active;
 
-	/** @var array[string]onnection */
+	/** @var array of connections */
 	private static $connections = array();
 
 	/**

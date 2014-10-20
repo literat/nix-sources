@@ -23,7 +23,7 @@ use Nix\Database\Result,
  */
 class PreparedResult extends Result
 {
-	/** @var Paginator */
+	/** @var Paginator paginator */
 	public $paginator;
 
 	/**
@@ -44,10 +44,10 @@ class PreparedResult extends Result
 	/**
 	 * Sets pagination
 	 * 
-	 * @param int $pate page
-	 * @param int $limit limit (default = 10)
-	 * @param int $count count pages
-	 * @return DbPreparedResult
+	 * @param 	int 	$page 	page
+	 * @param 	int 	$limit 	limit (default = 10)
+	 * @param 	int 	$count 	count pages
+	 * @return 	DbPreparedResult
 	 */
 	public function setPagination($page, $limit = 10, $count = null)
 	{

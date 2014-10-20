@@ -24,16 +24,16 @@ use Nix,
  */
 class MysqlDriver extends Nix\Object implements IDriver
 {
-	/** @var Resource */
+	/** @var Resource connection */
 	protected $connection;
 
-	/** @var Resource */
+	/** @var Resource result */
 	protected $result;
 
 	/**
 	 * Connects to database
 	 * 
-	 * @param   array     configuration
+	 * @param   array 		$config 	configuration
 	 * @throws  Exception
 	 * @return  void
 	 */
@@ -55,9 +55,9 @@ class MysqlDriver extends Nix\Object implements IDriver
 	/**
 	 * Runs native sql query
 	 * 
-	 * @param   string    sql query
+	 * @param   string 		$sql 	sql query
 	 * @throws  Exception
-	 * @return  DbDriver  clone $this
+	 * @return  DbDriver 			clone $this
 	 */
 	public function query($sql)
 	{
@@ -73,7 +73,7 @@ class MysqlDriver extends Nix\Object implements IDriver
 	/**
 	 * Fetchs one result's row
 	 * 
-	 * @param   bool      true = associative array | false = array
+	 * @param   bool 	$assoc 	true = associative array | false = array
 	 * @return  array
 	 */
 	public function fetch($assoc)
@@ -90,8 +90,8 @@ class MysqlDriver extends Nix\Object implements IDriver
 	/**
 	 * Escapes $value as a $type
 	 * 
-	 * @param   strign    type
-	 * @param   strign    value
+	 * @param   strign 	$type 	type
+	 * @param   strign 	$value 	value
 	 * @return  string
 	 */
 	public function escape($type, $value)
@@ -165,7 +165,7 @@ class MysqlDriver extends Nix\Object implements IDriver
 	/**
 	 * Returns description of table columns
 	 * 
-	 * @param   string    table name
+	 * @param   string 	$table 	table name
 	 * @return  array
 	 */
 	public function getTableColumnsDescription($table)

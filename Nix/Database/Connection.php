@@ -25,13 +25,13 @@ use Nix,
  */
 class Connection extends Nix\Object
 {
-	/** @var bool */
+	/** @var bool connected */
 	private $connected = false;
 
-	/** @var DbDriver */
+	/** @var DbDriver driver */
 	private $driver;
 
-	/** @var array */
+	/** @var array config */
 	private $config = array();
 
 	/**
