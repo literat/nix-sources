@@ -22,7 +22,7 @@ use Nix;
  */
 abstract class PermissionAssertion extends Nix\Object
 {
-	/** @var Resource */
+	/** @var Resource resource */
 	protected $resource;
 
 	/**

@@ -23,10 +23,10 @@ use Nix,
  */
 class Permission extends Nix\Object
 {
-	/** @var array */
+	/** @var array roles */
 	private $roles = array();
 
-	/** @var array */
+	/** @var array resources */
 	private $resources = array(
 		'*' => array(),
 	);

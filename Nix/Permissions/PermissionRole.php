@@ -22,16 +22,16 @@ use Nix;
  */
 class PermissionRole extends Nix\Object
 {
-	/** @var Permission */
+	/** @var Permission permission name */
 	private $permission;
 
 	/** @var string - Role name*/
 	private $name;
 
-	/** @var array */
+	/** @var array of resources */
 	private $resources = array();
 
-	/** @var array */
+	/** @var array of parents */
 	private $parents = array();
 
 	/**

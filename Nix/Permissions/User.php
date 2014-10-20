@@ -30,13 +30,13 @@ class User extends Nix\Object
 	const INVALID_PASSWORD = 2;
 	const UNAUTHORIZED_USER = 3;
 
-	/** @var SessionNamespace */
+	/** @var SessionNamespace of session */
 	protected $session;
 
-	/** @var IUserHandler */
+	/** @var IUserHandler user hadler */
 	protected $userHandler;
 
-	/** @var Permission */
+	/** @var Permission access control list */
 	protected $acl;
 
 	/**
