@@ -13,7 +13,8 @@ if(!function_exists('dump')) {
 	/**
 	 * Wrapper for Debugger::dump()
 	 *
-	 * @see Debugger::dump();
+	 * @param 	string 	 $var 	variable name
+	 * @see 	Debugger::dump();
 	 */
 	function dump($var)
 	{

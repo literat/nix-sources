@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Nix Framework
+ *
+ * Copyright (c) 2014 Tomáš Litera
+ *
+ * For the full copyright and license information, please view
+ * the file license.md that was distributed with this source code.
+ */
+
 namespace Nix\Exporting;
 
 /**
@@ -12,7 +21,7 @@ namespace Nix\Exporting;
  */
 class ExcelFactory
 {
-	/** @var Excel */
+	/** @var Excel object */
 	public $Excel;
 	
 	/** Constructor */
