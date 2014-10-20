@@ -24,7 +24,7 @@ use Nix,
  */
 abstract class AutoLoader extends Object
 {
-	/** @var array */
+	/** @var array callbacks */
 	private $callbacks = array();
 
 	/**

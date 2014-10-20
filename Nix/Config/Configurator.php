@@ -23,7 +23,7 @@ use Nix,
  */
 class Configurator
 {
-	/** @var array */
+	/** @var array of configurations */
 	public static $config = array();
 
 	/**
@@ -123,8 +123,8 @@ class Configurator
 	/**
 	 * Parses config node
 	 *
-	 * @param string config node
-	 * @return array
+	 * @param 	string 	$data 	config node
+	 * @return 	array
 	 */
 	protected static function parseNode($data)
 	{

@@ -23,13 +23,13 @@ use Nix;
  */
 class Request
 {
-	/** @var bool */
+	/** @var bool if is ajax */
 	public $isAjax;
 
-	/** @var string */
+	/** @var string method name */
 	public $method;
 
-	/** @var string */
+	/** @var string request */
 	public $request;
 
 	/**
