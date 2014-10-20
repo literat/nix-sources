@@ -25,7 +25,7 @@ use Nix,
 class Control extends Object
 {
 
-	/** @var SessionNamespace */
+	/** @var SessionNamespace flash session */
 	private $flashSession;
 
 	/**

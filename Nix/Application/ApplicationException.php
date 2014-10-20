@@ -20,10 +20,10 @@ namespace Nix\Application;
  */
 class ApplicationException extends \Exception
 {
-	/** @var string - Error template name */
+	/** @var string error template name */
 	public $errorFile;
 
-	/** @var mixed */
+	/** @var mixed error variable name */
 	public $variable;
 
 	/**
