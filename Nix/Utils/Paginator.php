@@ -23,16 +23,16 @@ use Nix,
  */
 class Paginator extends Object
 {
-	/** @var int */
+	/** @var int page */
 	protected $page;
 
-	/** @var int */
+	/** @var int pages */
 	protected $pages;
 
-	/** @var bool */
+	/** @var bool if has preview */
 	protected $hasPrev;
 
-	/** @var bool */
+	/** @var bool if has newxt */
 	protected $hasNext;
 
 	/**

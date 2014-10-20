@@ -179,9 +179,16 @@ function aa()
 }
 
 if(!function_exists('lcfirst')) {
+	/**
+	 * Make a string's first character lowercase
+	 *
+	 * @param 	string 	$string 	key
+	 * @return 	string
+	 */
 	function lcfirst($string)
 	{
 		$string[0] = strtolower($string[0]);
+
 		return (string) $string;
 	}
 }
