@@ -23,7 +23,7 @@ use Nix;
  */ 
 abstract class Object
 {
-	/** @var array */
+	/** @var array of extend methods */
 	private static $extendMethods = array();
 
 	/**
@@ -71,8 +71,9 @@ abstract class Object
 	/**
 	 * Magic getter method
 	 *
-	 * @throws OutOfBoundsException
-	 * @return mixed
+	 * @param 	string 	$key 	key
+	 * @throws 	OutOfBoundsException
+	 * @return 	mixed
 	 */
 	public function __get($key)
 	{
@@ -88,6 +89,8 @@ abstract class Object
 	/**
 	 * Magic setter method
 	 *
+	 * @param 	string 	$key 	key
+	 * @param   string 	$value 	value
 	 * @throws OutOfBoundsException
 	 * @return mixed
 	 */

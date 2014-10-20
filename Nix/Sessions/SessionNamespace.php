@@ -23,7 +23,7 @@ use Nix,
  */
 class SessionNamespace extends Object
 {
-	/** @var string */
+	/** @var string namespace */
 	protected $namespace;
 
 	/**
