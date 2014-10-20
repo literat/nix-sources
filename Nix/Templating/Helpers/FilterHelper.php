@@ -190,13 +190,13 @@ class FilterHelper extends Nix\Object
 	/**
 	 * Implode filter
 	 *
-	 * @param array $var
-	 * @param string $delitemter
-	 * @return string
+	 * @param 	array 	$var 		variable name
+	 * @param 	string 	$delimiter 	delimiter
+	 * @return 	string
 	 */
-	public function implode($var, $delimeter = ', ')
+	public function implode($var, $delimiter = ', ')
 	{
-		return implode($delimeter, $var);
+		return implode($delimiter, $var);
 	}
 
 	/**

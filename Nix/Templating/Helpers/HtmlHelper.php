@@ -27,7 +27,8 @@ class HtmlHelper extends Nix\Object
 	/**
 	 * Constructor
 	 *
-	 * @param Template $template
+	 * @param 	Template 	$template 	Template object
+	 * @param 	string 		$varName 	variable name
 	 * @return HtmlHelper
 	 */
 	public function  __construct(Template $template = null, $varName = null)

@@ -51,7 +51,7 @@ class AppTemplate extends Template
 	/**
 	 * Includes templatefile
 	 *
-	 * @param   string    filename
+	 * @param   string 	$file 	filename
 	 * @return  string
 	 */
 	public function subTemplate($file)
