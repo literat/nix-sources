@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Nix Framework
+ *
+ * Copyright (c) 2014 Tomáš Litera
+ *
+ * For the full copyright and license information, please view
+ * the file license.md that was distributed with this source code.
+ */
+
 namespace Nix\DI;
 
 /**
@@ -12,13 +21,18 @@ namespace Nix\DI;
  */
 class Container
 {
-	/** @var configuration */
+	/** @var arrray of configuration */
 	private $configuration;
 	
-	/** @var meeting ID */
+	/** @var int meeting id */
 	private $meetingId;
 	
-	/** Constructor */
+	/**
+	 * Constructor
+	 * 
+	 * @param array $configuration configuration options
+	 * @param int   $meetingId     id of meeting
+	 */
 	public function __construct($configuration, $meetingId = NULL)
 	{
 		$this->configuration = $configuration;

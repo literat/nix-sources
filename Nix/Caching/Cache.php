@@ -23,13 +23,13 @@ use Nix,
  */
 class Cache extends Object implements \ArrayAccess
 {
-	/** @var bool */
+	/** @var bool if enabled */
 	public $enabled;
 
-	/** @var string */
+	/** @var string storage name */
 	public $storage;
 
-	/** @var array */
+	/** @var array of metas */
 	protected $meta = array();
 
 	/**
@@ -183,8 +183,9 @@ class Cache extends Object implements \ArrayAccess
 	/**
 	 * Array-access interface
 	 *
-	 * @param
-	 * @param
+	 * @param  string  $key    variable name
+	 * @param  mixed   $value  variable value
+	 * @return void
 	 */
 	public function offsetSet($key, $value)
 	{
@@ -194,6 +195,7 @@ class Cache extends Object implements \ArrayAccess
 	/**
 	 * Array-access interface
 	 *
+	 * @param  string $key variable name
 	 * @return mixed
 	 */
 	public function offsetGet($key)
@@ -204,7 +206,8 @@ class Cache extends Object implements \ArrayAccess
 	/**
 	 * Array-access interface
 	 *
-	 * @param
+	 * @param  string $key variable name
+	 * @return void
 	 */
 	public function offsetUnset($key)
 	{
@@ -214,6 +217,7 @@ class Cache extends Object implements \ArrayAccess
 	/**
 	 * Array-access interface
 	 *
+	 * @param  string $key variable name
 	 * @return bool
 	 */
 	public function offsetExists($key)
@@ -312,9 +316,10 @@ class Cache extends Object implements \ArrayAccess
 	/**
 	 * Checks if is the file valid
 	 *
-	 * @param array $conds
-	 * @param array $header
-	 * @param string|null $file file path
+	 * @param  array       $conds
+	 * @param  array       $header
+	 * @param  string|null $file     file path
+	 * @param  bool        $cleaning if cleaning
 	 * @return bool
 	 */
 	protected function isValid($conds, $header, $file, $cleaning = false)

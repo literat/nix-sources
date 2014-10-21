@@ -24,28 +24,28 @@ use Nix,
  */
 class Session
 {
-	/** @var bool */
+	/** @var bool if started */
 	private static $started = false;
 
-	/** @var string */
+	/** @var string name */
 	protected static $name;
 
-	/** @var string */
+	/** @var string path */
 	protected static $path;
 
-	/** @var string */
+	/** @var string domain */
 	protected static $domain;
 
-	/** @var int */
+	/** @var int life time */
 	protected static $lifeTime;
 
-	/** @var bool */
+	/** @var bool if cross domain */
 	protected static $crossDomain;
 
-	/** @var bool */
+	/** @var bool if secure */
 	protected static $secure;
 
-	/** @var array */
+	/** @var array of namespaces */
 	protected static $namespaces = array();
 
 	/**
@@ -132,8 +132,8 @@ class Session
 	 * Safe reads session variable
 	 * If session is not started returns default
 	 *
-	 * @param string $var variable name
-	 * @param mixed $deafult default value
+	 * @param  string  $var      variable name
+	 * @param  mixed   $default  default value
 	 * @return mixed
 	 */
 	public static function safeRead($var, $default = null)

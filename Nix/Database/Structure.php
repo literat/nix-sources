@@ -23,7 +23,7 @@ use Nix\Caching\Cache,
  */
 class Structure
 {
-	/** @var array */
+	/** @var array of modificators */
 	public static $modificators = array(
 		'varchar'	=> Db::TEXT,
 		'char'		=> Db::TEXT,
@@ -49,13 +49,13 @@ class Structure
 		'decimal'	=> Db::FLOAT,
 	);
 
-	/** @var Structure */
+	/** @var Structure self */
 	protected static $self;
 
-	/** @var bool */
+	/** @var bool if updated */
 	public $updated = false;
 
-	/** @var array */
+	/** @var array of structure */
 	public $structure = array();
 
 	/**
@@ -108,8 +108,8 @@ class Structure
 	/**
 	 * Returns column's modificator
 	 * 
-	 * @param string $table table name (or expression "table.column")
-	 * @param string $columne
+	 * @param  string $table  table name (or expression "table.column")
+	 * @param  string $column column name
 	 * @return string
 	 */
 	public function getModificator($table, $column = null)

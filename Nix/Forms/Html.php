@@ -44,19 +44,19 @@ class Html extends Nix\Object
 	/** @var string - Tag's name*/
 	protected $tag;
 
-	/** @var bool */
+	/** @var bool if has pair */
 	protected $hasPair = true;
 
-	/** @var array */
+	/** @var array of content */
 	protected $content = array();
 
-	/** @var string|Html */
+	/** @var string|Html prepend */
 	protected $prepend;
 
-	/** @var string|Html */
+	/** @var string|Html append */
 	protected $append;
 
-	/** @var array */
+	/** @var array of attributes */
 	protected $attrs = array(
 		'href' => null,
 		'action' => null,
@@ -132,6 +132,9 @@ class Html extends Nix\Object
 
 	/**
 	 * Overloaded attribut's setter
+	 * 
+	 * @param  string $name  variable name
+	 * @param  mixed  $value variable value
 	 */
 	public function __set($name, $value)
 	{
@@ -141,6 +144,7 @@ class Html extends Nix\Object
 	/**
 	 * Overloaded attribut's getter
 	 * 
+	 * @param  string $name variable name
 	 * @throws Exception
 	 * @return mixed
 	 */
@@ -156,6 +160,7 @@ class Html extends Nix\Object
 	/**
 	 * Overloaded attribut's unsetter
 	 * 
+	 * @param  string $name variable name
 	 * @throws Exception
 	 */
 	public function __unset($name)
@@ -170,6 +175,7 @@ class Html extends Nix\Object
 	/**
 	 * Overloader attribut's isseter
 	 * 
+	 * @param  string $name variable name
 	 * @return bool
 	 */
 	public function __isset($name)

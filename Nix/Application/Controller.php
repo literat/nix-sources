@@ -17,6 +17,8 @@ use Nix\Http\Http;
 require_once __DIR__ . '/Control.php';
 
 /**
+ * Base application controller
+ * 
  * @property-read Template $template
  * @property-read Application $application
  * @property-read Router $router
@@ -38,7 +40,7 @@ abstract class Controller extends Nix\Application\Control
 	/** @var bool - Allow include templates which are not situated in module */
 	protected $templatePathReduction = true;
 
-	/** @var array */
+	/** @var array of services */
 	protected $services = array(
 		'rss' => array(
 			'layout' => 'rss-layout',
@@ -49,13 +51,13 @@ abstract class Controller extends Nix\Application\Control
 		),
 	);
 
-	/** @var Application */
+	/** @var Application application */
 	private $application;
 
-	/** @var Template */
+	/** @var Template  template */
 	private $template;
 
-	/** @var stdClass */
+	/** @var stdClass routing */
 	private $routing;
 
 	/**
@@ -140,12 +142,16 @@ abstract class Controller extends Nix\Application\Control
 		return $this->routing;
 	}
 
-	/**
-	 * Controller callbacks
-	 */
+	/** Controller callback */
 	public function init() {}
+
+	/** Controller callback */
 	public function beforeAction() {}
+
+	/** Controller callback */
 	public function afterAction() {}
+
+	/** Controller callback */
 	public function prepareTemplate() {}
 	/***/
 
@@ -251,8 +257,8 @@ abstract class Controller extends Nix\Application\Control
 	/**
 	 * Sets error template
 	 *
-	 * @param Exception $exception
-	 * @return Controller
+	 * @param 	Exception 	$template 	template exception
+	 * @return 	Controller
 	 */
 	public function setErrorTemplate($template)
 	{

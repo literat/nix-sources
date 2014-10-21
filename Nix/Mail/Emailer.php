@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Nix Framework
+ *
+ * Copyright (c) 2014 Tomáš Litera
+ *
+ * For the full copyright and license information, please view
+ * the file license.md that was distributed with this source code.
+ */
+
 namespace Nix\Mail;
 
 /**
@@ -12,16 +21,20 @@ namespace Nix\Mail;
  */
 class Emailer
 {
-	/* jsem na vyvoji nebo na produkci? */
+	/** @var bool if is development */
 	protected $isDev;
 	
-	/** @var PHPMailerFactory */
+	/** @var PHPMailerFactory isntance of PHPMailerFactory */
 	private $PHPMailerFactory;
 	
-	/** @var Emailer */
+	/** @var Emailer instance of Emailer */
 	private $Emailer;
 	
-	/* Constructor */
+	/**
+	 * Constructor
+	 * 
+	 * @param PHPMailerFactory $PHPMailerFactory instance of PHPMailerFactory
+	 */
 	public function __construct(PHPMailerFactory $PHPMailerFactory)
 	{
 		// jestli jsem na vyvojove masine - true/false
@@ -35,11 +48,12 @@ class Emailer
 	/**
 	 * Send an e-mail to recipient
 	 *
-	 * @param	string	recipient e-mail
-	 * @param	string	recipient name
-	 * @param	string	subject
-	 * @param	string	message
-	 * @return	mixed	true or error information
+	 * @param	string	$recipient_mail  recipient e-mail
+	 * @param	string	$recipient_name  recipient name
+	 * @param	string	$subject         subject
+	 * @param	string	$message         message
+	 * @param	mixed	$bcc_mail        true or error information (optional)
+	 * @return  mixed|bool true or error information
 	 */
 	public function sendMail($recipient_mail, $recipient_name, $subject, $message, $bcc_mail = NULL)
 	{	
@@ -68,7 +82,7 @@ class Emailer
 	/**
 	 * Get e-mail templates from settings
 	 *
-	 * @param	string	type of template
+	 * @param	string	$type  type of template
 	 * @return	array	subject and message
 	 */	
 	public function getTemplates($type)
@@ -88,9 +102,9 @@ class Emailer
 	/**
 	 * Sends an e-mail to lecture master
 	 *
-	 * @param	int		ID of program/block
-	 * @param	int		ID of meeting
-	 * @param	string	program | block
+	 * @param	int		$contentId  ID of program/block
+	 * @param	int		$meetingId  ID of meeting
+	 * @param	string	$type       program | block
 	 * @return	mixed	true | error information
 	 */
 	public function tutor($contentId, $meetingId, $type)
@@ -135,10 +149,10 @@ class Emailer
 	/**
 	 * Sends an after registration summary e-mail to visitor
 	 *
-	 * @param	string	recipient mail
-	 * @param	string	recipient name
-	 * @param	int		check hash code
-	 * @param	string	code for recognition of bank transaction
+	 * @param	string	$recipient_mail  recipient mail
+	 * @param	string	$recipient_name  recipient name
+	 * @param	int		$hash            check hash code
+	 * @param	string	$code4bank       code for recognition of bank transaction
 	 * @return	mixed	true | error information
 	 */
 	public function sendRegistrationSummary($recipient_mail, $recipient_name, $hash, $code4bank)
@@ -159,10 +173,10 @@ class Emailer
 	/**
 	 * Send an information mail to multiple visitors
 	 *
-	 * @param	integer	ID of visitor
-	 * @param	string	subject
-	 * @param	string	message
-	 * @return	mixed	true | error information
+	 * @param	integer	 $id       ID of visitor
+	 * @param	string	 $subject  subject
+	 * @param	string	 $message  message
+	 * @return	mixed	 true | error information
 	 */
 	public function noticeVisitor($id, $subject, $message)
 	{
@@ -200,8 +214,8 @@ class Emailer
 	/**
 	 * Get e-mail templates from settings
 	 *
-	 * @param	mixed	id numbers in row
-	 * @param	string	type of template
+	 * @param	mixed	$query_id  id numbers in row
+	 * @param	string	$type      type of template
 	 * @return	array	subject and message
 	 */		
 	public function sendPaymentInfo($query_id, $type)

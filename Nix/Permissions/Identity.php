@@ -26,7 +26,7 @@ class Identity extends Nix\Object implements IIdentity
 	/** @var mixed - User primary key */
 	protected $id;
 
-	/** @var array */
+	/** @var array of roles */
 	protected $roles = array();
 
 	/** @var array - User data */
@@ -35,10 +35,10 @@ class Identity extends Nix\Object implements IIdentity
 	/**
 	 * Constructor
 	 * 
-	 * @param mixed user primary key
-	 * @param array|string user roles
-	 * @param array optional user data
-	 * @return Indentity
+	 * @param 	mixed 			$id 	user primary key
+	 * @param 	array|string 	$roles 	user roles
+	 * @param 	array 			$data 	optional user data
+	 * @return 	Indentity
 	 */
 	public function __construct($id, $roles = array('guest'), $data = array())
 	{

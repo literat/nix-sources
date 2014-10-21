@@ -35,7 +35,7 @@ class Request
 	/**
 	 * Constructor
 	 *
-	 * @return HFHttpRequest
+	 * @return HttpRequest
 	 */
 	public function __construct()
 	{

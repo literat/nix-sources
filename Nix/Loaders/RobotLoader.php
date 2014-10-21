@@ -28,22 +28,22 @@ class RobotLoader extends AutoLoader
 	/** @var array - Allowed extension */
 	public $exts = array('php');
 
-	/** @var bool */
+	/** @var bool if use autorebuild */
 	public $autoRebuild = false;
 
-	/** @var bool */
+	/** @var bool if rebuild */
 	public $rebuild = false;
 
-	/** @var array */
+	/** @var array of classes */
 	private $classes = array();
 
-	/** @var array */
+	/** @var array of files */
 	private $files = array();
 
-	/** @var array */
+	/** @var array of dirs */
 	private $dirs = array();
 
-	/** @var Cache */
+	/** @var Cache cache handler */
 	private $cache;
 
 	/**

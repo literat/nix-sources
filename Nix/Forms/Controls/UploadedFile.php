@@ -20,22 +20,22 @@ namespace Nix\Forms\Controls;
  */
 class UploadedFile
 {
-	/** @var string */
+	/** @var string uploads */
 	public static $uploads;
 
-	/** @var int */
+	/** @var int state */
 	public $state;
 
-	/** @var string */
+	/** @var string file name */
 	public $name;
 
-	/** @var string */
+	/** @var string temporary directory */
 	public $temp;
 
-	/** @var string */
+	/** @var string file type */
 	public $type;
 
-	/** @var string */
+	/** @var string filez size */
 	public $size;
 
 	/**

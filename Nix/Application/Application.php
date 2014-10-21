@@ -47,7 +47,7 @@ class Application extends Object
 	/** @var bool Error mode */
 	public static $error = false;
 
-	/** @var Application */
+	/** @var Application itself */
 	private static $self;
 
 	/**
@@ -79,19 +79,19 @@ class Application extends Object
 	/** @var string - Error controller name */
 	public $errorController = 'AppController';
 
-	/** @var string */
+	/** @var string path */
 	private $path;
 
-	/** @var string */
+	/** @var string path to core */
 	private $corePath;
 
-	/** @var Router */
+	/** @var Router router */
 	private $router;
 
-	/** @var Cache */
+	/** @var Cache cache */
 	private $cache;
 
-	/** @var CustomController */
+	/** @var CustomController controller */
 	private $controller;
 
 	/**
@@ -245,7 +245,7 @@ class Application extends Object
 	/**
 	 * Proccess application exceptions and renders error page/message
 	 *
-	 * @param Exception
+	 * @param  Exception  $exception  application exception
 	 */
 	public function processException(Exception $exception)
 	{

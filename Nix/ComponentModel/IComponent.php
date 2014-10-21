@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Nix Framework
+ *
+ * Copyright (c) 2014 Tomáš Litera
+ *
+ * For the full copyright and license information, please view
+ * the file license.md that was distributed with this source code.
+ */
+
 namespace Nix;
 
 use Nix;
@@ -17,15 +26,16 @@ interface IComponent extends Nix\IModel
 	/**
 	 * Create a new record
 	 *
-	 * @return	boolean
+	 * @param  array   $dbData data from database
+	 * @return boolean
 	 */
 	public function create(array $dbData);
 
 	/**
 	 * Modify record
 	 *
-	 * @param	int		ID of record
-	 * @param	array	Associated array with data to DB
+	 * @param	int    $id      ID of record
+	 * @param	array  $dbData  Associated array with data to DB
 	 * @return	bool
 	 */	
 	public function update($id, array $dbData);
@@ -33,7 +43,7 @@ interface IComponent extends Nix\IModel
 	/**
 	 * Delete record
 	 *
-	 * @param	int		ID of record
+	 * @param	int      $id  ID of record
 	 * @return	boolean 
 	 */
 	public function delete($id);

@@ -26,19 +26,19 @@ use Nix,
  */
 class Router
 {
-	/** @var Http */
+	/** @var Http instance of Http */
 	public $Http;
 
-	/** @var bool */
+	/** @var bool if routed */
 	public $routed = false;
  
-	/** @var array */
+	/** @var array of defaults */
 	protected $defaults = array();
  
-	/** @var string */
+	/** @var string request */
 	protected $request;
  
-	/** @var array */
+	/** @var array of routing */
 	protected $routing = array(
 		'controller' => '',
 		'module' => array(),
@@ -46,13 +46,13 @@ class Router
 		'service' => '',
 	);
  
-	/** @var array */ 
+	/** @var array of arguments */ 
 	protected $args = array();
  
-	/** @var array */
+	/** @var array of parameters */
 	protected $params = array();
  
-	/** @var null|array */
+	/** @var null|array temporary arguments */
 	protected $__tempArgs;
  
 	/**
@@ -101,10 +101,10 @@ class Router
 	/**
 	 * Connects to url
 	 *
-	 * @param string $route routing expression
-	 * @param array $defaults default routing settings
-	 * @param bool $allowArg allow undefined args?
-	 * @param bool $allowParams allow query params?
+	 * @param  string $route       routing expression
+	 * @param  array  $defaults    default routing settings
+	 * @param  bool   $allowArgs   allow undefined args?
+	 * @param  bool   $allowParams allow query params?
 	 * @return bool
 	 */
 	public function connect($route, $defaults = array(), $allowArgs = false, $allowParams = false)
@@ -326,6 +326,8 @@ class Router
 	/**
 	 * Setter
 	 *
+	 * @param  string $key   variable name
+	 * @param  mixed  $value variable value
 	 * @throws Exception
 	 */
 	public function __set($key, $value)
@@ -336,6 +338,7 @@ class Router
 	/**
 	 * Issetter
 	 *
+	 * @param  string $key variable name
 	 * @return bool
 	 */
 	public function __isset($key)
@@ -346,6 +349,7 @@ class Router
 	/**
 	 * Unsetter
 	 *
+	 * @param  string $key variable name
 	 * @throws Exception
 	 */
 	public function __unset($key)

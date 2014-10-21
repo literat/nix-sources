@@ -25,16 +25,16 @@ use Nix,
  */
 class Result extends Nix\Object implements \Countable, \IteratorAggregate
 {
-	/** @var string */
+	/** @var string query */
 	protected $query;
 
-	/** @var Driver */
+	/** @var Driver driver */
 	protected $driver;
 
-	/** @var bool */
+	/** @var bool if executed */
 	protected $executed = false;
 
-	/** @var array */
+	/** @var array of association */
 	protected $association = array();
 
 	/** @var int - Points to the last fetched row */
@@ -246,10 +246,10 @@ class Result extends Nix\Object implements \Countable, \IteratorAggregate
 		$this->tables = count($tables) > 1;
 	}
 
-	/*
+	/**
 	 * Combines tables with theirs columns
 	 * 
-	 * @param array $row table row
+	 * @param  array  $row  table row
 	 * @return array
 	 */
 	private function combineColumns($row)
@@ -278,6 +278,7 @@ class Result extends Nix\Object implements \Countable, \IteratorAggregate
 	/**
 	 * Returns one reuslt row (stored or new fetched)
 	 * 
+	 * @param  array  $assoc  associative array
 	 * @return bool
 	 */
 	private function getRow($assoc)

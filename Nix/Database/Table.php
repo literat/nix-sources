@@ -26,14 +26,14 @@ use Nix,
  */
 abstract class Table extends Nix\Object
 {
-	/** @var Structure */
+	/** @var Structure structure */
 	public static $structure;
 
 	/**
 	 * Creates table class and returns class name
 	 * 
-	 * @param string $name table name
-	 * @return string
+	 * @param   string  $table  table name
+	 * @return  string
 	 */
 	public static function init($table)
 	{
@@ -45,19 +45,19 @@ abstract class Table extends Nix\Object
 		return $class;
 	}
 
-	/** @var string */
+	/** @var string table name */
 	protected $table;
 
-	/** @var mixed */
+	/** @var mixed primary key */
 	protected $primaryKey;
 
-	/** @var mixed */
+	/** @var mixed value of primary key */
 	protected $primaryKeyValue;
 
-	/** @var array */
+	/** @var array of fields */
 	protected $fields = array();
 
-	/** @var array */
+	/** @var array of fields modificators */
 	protected $fieldsModificators = array();
 
 	/**
@@ -125,12 +125,12 @@ abstract class Table extends Nix\Object
 	/**
 	 * Returns table form
 	 * 
-	 * @param array $editCols
-	 * @param array $labels
-	 * @param string $formUrl
-	 * @param string @formName
-	 * @throws Exception
-	 * @return Form
+	 * @param   array   $editCols
+	 * @param   array   $labels
+	 * @param   string  $formUrl
+	 * @param   string  $formName
+	 * @throws  Exception
+	 * @return  Form
 	 */
 	public function getForm($editCols = array(), $labels = array(), $formUrl = null, $formName = null)
 	{

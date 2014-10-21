@@ -1,6 +1,20 @@
 <?php
 
 /**
+ * This file is part of the Nix Framework
+ *
+ * Copyright (c) 2014 Tomáš Litera
+ *
+ * For the full copyright and license information, please view
+ * the file license.md that was distributed with this source code.
+ */
+
+namespace Nix;
+
+use Nix,
+	Nix\Database\Db;
+
+/**
  * Component
  *
  * Component is a base class for all components.
@@ -9,18 +23,16 @@
  * @created 2012-12-16
  * @author Tomas Litera <tomaslitera@hotmail.com>
  */
-
-namespace Nix;
-
-use Nix,
-	Nix\Database\Db;
-
 abstract class Component implements Nix\IComponent
 {
-	/** Table in Database */
+	/** @var string Table in Database */
 	protected $dbTable;
 	
-	/** Constructor */
+	/**
+	 * Constructor
+	 * 
+	 * @param string $dbTable table name
+	 */
 	public function __construct($dbTable = NULL)
 	{
 		$this->dbTable = $dbTable;
@@ -42,8 +54,8 @@ abstract class Component implements Nix\IComponent
 	/**
 	 * Create a new record
 	 *
-	 * @param	mixed	array of data
-	 * @return	boolean
+	 * @param   mixed    $db_data  array of data
+	 * @return  boolean
 	 */
 	public function create(array $db_data)
 	{
@@ -89,7 +101,7 @@ abstract class Component implements Nix\IComponent
 	/**
 	 * Delete one or multiple record/s
 	 *
-	 * @param	int		ID/s of record
+	 * @param	int      $id  ID/s of record
 	 * @return	boolean 
 	 */
 	public function delete($id)

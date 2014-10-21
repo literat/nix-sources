@@ -24,19 +24,19 @@ use Nix,
  */
 class Http
 {
-	/** @var string */
+	/** @var string domain name */
 	public static $domain;
 
-	/** @var string */
+	/** @var string server url */
 	public static $serverURL;
 
-	/** @var string */
+	/** @var string base url */
 	public static $baseURL;
  
-	/** @var HFHttpRequest */
+	/** @var HttpRequest request */
 	public static $request;
 
-	/** @var HFHttpResponse */
+	/** @var HttpResponse request */
 	public static $response;
  
 	/**

@@ -75,10 +75,31 @@ interface ITemplate
 	public function render();
 
 	/**
-	 * Interface methods
+	 * Interface method
+	 * @param  string  $name variable name
+	 * @return boolean       if is set
 	 */
 	public function __isset($name);
+
+	/**
+	 * Interface method
+	 * @param 	string $name variable name
+	 * @return  void
+	 */
 	public function __unset($name);
+
+	/**
+	 * Interface method
+	 * @param 	string 	$name  variable name
+	 * @param 	mixed 	$value value
+	 * @return 	void
+	 */
 	public function __set($name, $value);
+
+	/**
+	 * Interface method
+	 * @param  string $name variable name
+	 * @return mixed 		variable value
+	 */
 	public function __get($name);
 }

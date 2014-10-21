@@ -36,7 +36,9 @@ class ResultNode implements \ArrayAccess, \IteratorAggregate
 	/**
 	 * Magic method
 	 * 
+	 * @param  string 	$name variable name
 	 * @throws Exception
+	 * @return void
 	 */
 	public function __get($name)
 	{
@@ -45,6 +47,10 @@ class ResultNode implements \ArrayAccess, \IteratorAggregate
 
 	/**
 	 * Array-access interface
+	 * 
+	 * @param  string 	$key 	variable name
+	 * @param  mixed 	$value 	variable value
+	 * @return void
 	 */
 	public function offsetSet($key, $value)
 	{
@@ -54,6 +60,7 @@ class ResultNode implements \ArrayAccess, \IteratorAggregate
 	/**
 	 * Array-access interface
 	 * 
+	 * @param  string $key variable name
 	 * @return mixed
 	 */
 	public function offsetGet($key)
@@ -67,6 +74,9 @@ class ResultNode implements \ArrayAccess, \IteratorAggregate
 
 	/**
 	 * Array-access interface
+	 * 
+	 * @param  string $key variable name
+	 * @return void
 	 */
 	public function offsetUnset($key)
 	{
@@ -76,7 +86,8 @@ class ResultNode implements \ArrayAccess, \IteratorAggregate
 	/**
 	 * Array-access interface
 	 * 
-	 * @return bool
+	 * @param  string $key 	variable name
+	 * @return bool 		if key is set
 	 */
 	public function offsetExists($key)
 	{

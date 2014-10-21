@@ -26,50 +26,57 @@ use Nix,
  */
 abstract class FormControl extends Nix\Object
 {
-	/** @var string */
+	/** @var string form name */
 	protected $name;
 
-	/** @var Form */
+	/** @var Form instance of Form */
 	protected $form;
 
-	/** @var Html */
+	/** @var Html control */
 	protected $control;
 
-	/** @var Html|bool */
+	/** @var Html|bool label */
 	protected $label = false;
 
-	/** @var mixed */
+	/** @var mixed value */
 	protected $value;
 
-	/** @var mixed */
+	/** @var mixed empty value */
 	protected $emptyValue;
 
-	/** @var array */
+	/** @var array of filters */
 	protected $filters = array();
 
-	/** @var string */
+	/** @var string error */
 	protected $error;
 
-	/** @var array */
+	/** @var array of rules */
 	protected $rules = array();
 
-	/** @var array */
+	/** @var array of conditions  */
 	protected $conditions = array();
 
 	/**
 	 * HTML elements 
-	 * @var Html
 	 */
+	
+	/** @var Html html control */
 	protected $htmlControl;
+
+	/** @var Html html label */
 	protected $htmlLabel;
+
+	/** @var Html html error */
 	protected $htmlError;
+
+	/** @var Html html error label */
 	protected $htmlErrorLabel;
 	/***/
 
 	/** @var bool - Is HTML control rendered? */
 	protected $isRendered = false;
 
-	/** @var array */
+	/** @var array of required */
 	protected $htmlRequired = false;
 
 	/**
@@ -417,6 +424,8 @@ abstract class FormControl extends Nix\Object
 
 	/**
 	 * Magic method
+	 * 
+	 * @param  string $key variable name
 	 */
 	public function __get($key)
 	{
@@ -444,6 +453,7 @@ abstract class FormControl extends Nix\Object
 	/**
 	 * Filters value by filters and null them if value is equall to emptyValue
 	 * 
+	 * @param  mixed $value value
 	 * @return mixed
 	 */
 	protected function filter($value)

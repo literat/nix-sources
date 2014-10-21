@@ -25,19 +25,19 @@ use Nix,
  */
 class Debugger
 {
-	/** @var bool */
+	/** @var bool if is firebug */
 	public static $isFirebug = false;
 
-	/** @var string */
+	/** @var string log file name */
 	public static $logFile = 'errors.log';
 
-	/** @var string */
+	/** @var string path to log file */
 	public static $logPath = '/';
 
-	/** @var array */
+	/** @var array of toolbar */
 	private static $toolbar = array();
 
-	/** @var bool */
+	/** @var bool if active */
 	private static $active = false;
 
 	/**
@@ -113,7 +113,7 @@ class Debugger
 	/**
 	 * Set logging path
 	 *
-	 * @param mixed path
+	 * @param mixed $path path
 	 * @return void
 	 */
 	public static function setLogPath($path) {
@@ -123,7 +123,7 @@ class Debugger
 	/**
 	 * Returns time in miliseconds
 	 *
-	 * @param int start time (optional)
+	 * @param int $startTime start time (optional)
 	 * @return float
 	 */
 	public static function getTime($startTime = null)
@@ -326,9 +326,9 @@ class Debugger
 		}
 
 		static $counter = 0;
-		header('X-Wf-Protocol-hf: http://meta.wildfirehq.org/Protocol/JsonStream/0.2');
-		header('X-Wf-hf-Plugin-1: http://meta.firephp.org/Wildfire/Plugin/FirePHP/Library-FirePHPCore/0.2.0');
-		header('X-Wf-hf-Structure-1: http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1');
+		header('X-Wf-Protocol-nix: http://meta.wildfirehq.org/Protocol/JsonStream/0.2');
+		header('X-Wf-nix-Plugin-1: http://meta.firephp.org/Wildfire/Plugin/FirePHP/Library-FirePHPCore/0.2.0');
+		header('X-Wf-nix-Structure-1: http://meta.firephp.org/Wildfire/Structure/FirePHP/FirebugConsole/0.1');
 
 		$content = array(
 			array('Type' => strtolower($type), 'Label' => $label),
@@ -339,9 +339,9 @@ class Debugger
 		$parts = str_split(json_encode($content), 500);
 		$last = array_pop($parts);
 		foreach($parts as $part) {
-			header('X-Wf-hf-1-1-h' . ++$counter .": |$part|\\");
+			header('X-Wf-nix-1-1-h' . ++$counter .": |$part|\\");
 		}
-		header('X-Wf-hf-1-1-h' . ++$counter . ": |$last|");
+		header('X-Wf-nix-1-1-h' . ++$counter . ": |$last|");
 
 		return true;
 	}
@@ -349,7 +349,7 @@ class Debugger
 	/**
 	 * Displays exception errro page
 	 *
-	 * @param Exception
+	 * @param  Exception $exception exception
 	 * @return void
 	 */
 	public static function showException($exception)
@@ -367,15 +367,22 @@ if(!isset($startTime)) {
 
 Debugger::init();
 
+/**
+ * FatalErrorException
+ *
+ * @author      Tomas Litera 	<tomaslitera@hotmail.com>
+ * @package     Nix
+ * @subpackage  Debugging
+ */
 class FatalErrorException extends \Exception
 {
-	/** @var array */
+	/** @var array of error */
 	protected $error;
 
 	/**
 	 * Contructor
 	 *
-	 * @param array
+	 * @param array $error error summary
 	 * @return FatalErrorException
 	 */
 	public function __construct($error)

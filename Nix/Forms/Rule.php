@@ -60,19 +60,19 @@ class Rule extends Nix\Object
 		'!regexp'	=> 'Value must not passed by regular expression (%s).',
 	);
 
-	/** @var FormControl */
+	/** @var FormControl control */
 	public $control;
 
-	/** @var mixed */
+	/** @var mixed arguments */
 	public $arg;
 
-	/** @var string */
+	/** @var string message */
 	public $message;
 
-	/** @var string */
+	/** @var string rule */
 	public $rule;
 
-	/** @var bool */
+	/** @var bool if negative */
 	public $negative = false;
 
 	/**

@@ -54,19 +54,19 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/** @var string - Form name */
 	public $name;
 
-	/** @var Html */
+	/** @var Html form */
 	private $form;
 
 	/** @var bool|string - Submit button name */
 	private $submitBy = false;
 
-	/** @var array */
+	/** @var array of controls */
 	private $controls = array();
 
 	/** @var bool - Is form CSRF protected? */
 	private $protected = false;
 
-	/** @var FormRenderer */
+	/** @var FormRenderer form renderer */
 	private $renderer;
 
 	/**
@@ -239,9 +239,9 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Adds select input
 	 * 
-	 * @param string $control control name
-	 * @param   array   options
-	 * @param mixed $label label (null = from name, false = no label)
+	 * @param  string  $control  control name
+	 * @param  array   $options  options
+	 * @param  mixed   $label    label (null = from name, false = no label)
 	 * @return Form
 	 */
 	public function addSelect($control, $options, $label = null)
@@ -268,9 +268,9 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Adds radio inputs
 	 * 
-	 * @param string $control control name
-	 * @param   array   options
-	 * @param mixed $label label (null = from name, false = no label)
+	 * @param  string  $control  control name
+	 * @param  array   $options  options
+	 * @param  mixed   $label    label (null = from name, false = no label)
 	 * @return Form
 	 */
 	public function addRadio($control, $options, $label = null)
@@ -298,9 +298,9 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Adds multiple select input
 	 * 
-	 * @param string $control control name
-	 * @param   array   options
-	 * @param mixed $label label (null = from name, false = no label)
+	 * @param  string  $control  control name
+	 * @param  array   $options  options
+	 * @param  mixed   $label    label (null = from name, false = no label)
 	 * @return Form
 	 */
 	public function addMultiSelect($control, $options, $label = null)
@@ -313,9 +313,9 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Adds multi checkbox inputs
 	 * 
-	 * @param string $control control name
-	 * @param   array   options
-	 * @param mixed $label label (null = from name, false = no label)
+	 * @param  string  $control  control name
+	 * @param  array   $options  options
+	 * @param  mixed   $label    label (null = from name, false = no label)
 	 * @return Form
 	 */
 	public function addMultiCheckbox($control, $options, $label = null)
@@ -330,8 +330,8 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Adds submit button
 	 * 
-	 * @param string $control control name
-	 * @param string $control control  label
+	 * @param  string  $control  control name
+	 * @param  string  $label    control label
 	 * @return Form
 	 */
 	public function addSubmit($control = 'submit', $label = null)
@@ -344,8 +344,8 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Adds image submit button
 	 * 
-	 * @param string $control control name
-	 * @param   string  image src
+	 * @param  string  $control  control name
+	 * @param  string  $src      image source
 	 * @return Form
 	 */
 	public function addImageSubmit($control = 'submit', $src = null)
@@ -358,8 +358,8 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Adds reset button
 	 * 
-	 * @param string $control control name
-	 * @param string $control control  label
+	 * @param  string  $control  control name
+	 * @param  string  $label    control label
 	 * @return Form
 	 */
 	public function addReset($control = 'reset', $label = null)
@@ -534,6 +534,10 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 
 	/**
 	 * Array-access interface
+	 * 
+	 * @param  int   $id     identificator
+	 * @param  mixed $value  value
+	 * @return void
 	 */
 	public function offsetSet($id, $value)
 	{
@@ -543,6 +547,7 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Array-access interface
 	 * 
+	 * @param  int  $id  identificator
 	 * @return FormControl
 	 */
 	public function offsetGet($id)
@@ -557,6 +562,7 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Array-access interface
 	 * 
+	 * @param  int  $id  identificator
 	 * @throws Exception
 	 */
 	public function offsetUnset($id)
@@ -571,6 +577,7 @@ class Form extends Nix\Object implements \ArrayAccess,\IteratorAggregate
 	/**
 	 * Array-access interface
 	 * 
+	 * @param  int  $id  identificator
 	 * @return bool
 	 */
 	public function offsetExists($id)

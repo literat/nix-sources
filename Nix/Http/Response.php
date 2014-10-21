@@ -27,7 +27,7 @@ class Response
 	 * Sends error header
 	 *
 	 * @param int $code error code
-	 * @return HFHttpResponse
+	 * @return HttpResponse
 	 */
 	public function error($code = 404)
 	{
@@ -54,7 +54,7 @@ class Response
 	 *
 	 * @param string $url absolute url
 	 * @param int $code redirect code
-	 * @return HFHttpResponse
+	 * @return HttpResponse
 	 */
 	public function redirect($url, $code = 300)
 	{
@@ -66,7 +66,7 @@ class Response
 	 * Sends mime-type header
 	 *
 	 * @param string $mime mime-type
-	 * @return HFHttoResponse
+	 * @return HttoResponse
 	 */
 	public function mimetype($mime)
 	{

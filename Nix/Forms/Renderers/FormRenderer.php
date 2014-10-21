@@ -27,7 +27,7 @@ use Nix,
  */
 abstract class FormRenderer extends Nix\Object implements IFormRenderer
 {
-	/** @var IFormJsValidator */
+	/** @var IFormJsValidator form js validator */
 	public $javascript = null;
 
 	/** @var array - Wrappers, set the tag name or Html object */	
@@ -39,7 +39,7 @@ abstract class FormRenderer extends Nix\Object implements IFormRenderer
 		'button-separator' => null,
 	);
 
-	/** @var Form */
+	/** @var Form object */
 	protected $form;
 
 	/**
@@ -324,17 +324,38 @@ abstract class FormRenderer extends Nix\Object implements IFormRenderer
 	{
 		return $wrapper;
 	}
-	
+
+	/**
+	 * Prepares wrapperes
+	 * 
+	 * @param Html $wrapper
+	 * @param FormControl $control
+	 * @return Html
+	 */
 	protected function preparePair($wrapper, $control)
 	{
 		return $wrapper;
 	}
-	
+
+	/**
+	 * Prepares wrapperes
+	 * 
+	 * @param Html $wrapper
+	 * @param FormControl $control
+	 * @return Html
+	 */
 	protected function prepareControl($wrapper, $control)
 	{
 			return $wrapper;
 	}
-	
+
+	/**
+	 * Prepares wrapperes
+	 * 
+	 * @param Html $wrapper
+	 * @param FormControl $control
+	 * @return Html
+	 */
 	protected function prepareLabel($wrapper, $control)
 	{
 		return $wrapper;

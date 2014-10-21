@@ -36,7 +36,7 @@ use Nix,
  */
 class Template extends Object implements ITemplate
 {
-	/** @var array */
+	/** @var array of default template keywords */
 	public static $defaultTplKeywords = array(
 		'{if %%}' => '<?php if (\1): ?>',
 		'{elseif %%}' => '<?php ; elseif (\1): ?>',
@@ -52,7 +52,7 @@ class Template extends Object implements ITemplate
 		'{break}' => '<?php break; ?>',
 	);
 
-	/** @var array */
+	/** @var array of default template triggers */
 	public static $defaultTplTriggers = array(
 		'php' => array('Nix\Templating\Template', 'cbPhpTrigger'),
 		'extends' => array('Nix\Templating\Template', 'cbExtendsTrigger'),
@@ -60,63 +60,63 @@ class Template extends Object implements ITemplate
 		'noescape' => array('Nix\Templating\Template', 'cbNoEscapeTrigger'),
 	);
 
-	/** @var array */
+	/** @var array of default template functions */
 	public static $defaultTplFunctions = array(
 		'include' => '$template->subTemplate',
 		'mimetype' => '$template->setMimetype',
 	);
 
-	/** @var array */
+	/** @var array of default template filters */
 	public static $defaultTplFilters = array();
 
-	/** @var array */
+	/** @var array of registered blocks */
 	protected static $registeredBlocks = array();
 
-	/** @var array */
+	/** @var array of template keywords */
 	public $tplKeywords = array();
 
-	/** @var array */
+	/** @var array of template triggers */
 	public $tplTriggers = array();
 
-	/** @var array */
+	/** @var array template functions */
 	public $tplFunctions = array();
 
-	/** @var array */
+	/** @var array of template filters */
 	public $tplFilters = array();
 
-	/** @var Cache */
+	/** @var Cache cache */
 	protected $cache;
 
-	/** @var string */
+	/** @var string file name */
 	protected $file;
 
-	/** @var string */
+	/** @var string extends file */
 	protected $extendsFile;
 
-	/** @var array */
+	/** @var array of variables */
 	protected $vars = array();
 
-	/** @var array */
+	/** @var array of helpers */
 	protected $helpers = array();
 
-	/** @var array */
+	/** @var array of do not escape */
 	protected $dontEscape = array();
 
-	/** @var bool */
+	/** @var bool if has extends */
 	private $__hasExtends = false;
 
-	/** @var bool */
+	/** @var bool if has blocks */
 	private $__hasBlocks = false;
 
-	/** @var bool */
+	/** @var bool if is included */
 	private $isIncluded = false;
 
 	/**
 	 * Constructor
 	 *
-	 * @param string $file template filename
-	 * @param string $temp path for cache templates
-	 * @param bool $isIncluded is template child of another template?
+	 * @param  string  $file        template filename
+	 * @param  string  $cache       path for cache templates
+	 * @param  bool    $isIncluded  is template child of another template?
 	 * @return Template
 	 */
 	public function __construct($file = null, Nix\Caching\Cache $cache = null, $isIncluded = false)
@@ -503,7 +503,7 @@ class Template extends Object implements ITemplate
 	/**
 	 * Creates php template file from pseudo template style
 	 *
-	 * @param string $cacheFileName
+	 * @param  string $cacheFile cache file name
 	 * @return bool
 	 */
 	protected function createTemplateTemp($cacheFile)
@@ -586,7 +586,7 @@ class Template extends Object implements ITemplate
 	/**
 	 * Returns template code for blocks
 	 *
-	 * @param array $expression
+	 * @param  array  $matches array of matches
 	 * @return string
 	 */
 	protected function __cbBlock($matches)
@@ -673,7 +673,7 @@ class Template extends Object implements ITemplate
 	/**
 	 * Callback for turns off variable escaping
 	 *
-	 * @param string $name variable name
+	 * @param string $expression expression
 	 */
 	protected function cbNoEscapeTrigger($expression)
 	{

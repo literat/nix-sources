@@ -1,5 +1,14 @@
 <?php
 
+/**
+ * This file is part of the Nix Framework
+ *
+ * Copyright (c) 2014 Tomáš Litera
+ *
+ * For the full copyright and license information, please view
+ * the file license.md that was distributed with this source code.
+ */
+
 namespace Nix\Mail;
 
 /**
@@ -12,13 +21,17 @@ namespace Nix\Mail;
  */
 class PHPMailerFactory
 {
-	/** @var PHPMailer */
+	/** @var PHPMailer instance of PHPMailer */
 	public $PHPMailer;
 	
-	/** @var configuration */
+	/** @var array of configuration */
 	private $configuration;
 	
-	/** Constructor */
+	/**
+	 * Constructor
+	 * @param PHPMailer $PHPMailer     instance of PHPMailer
+	 * @param array     $configuration configuration options
+	 */
 	public function __construct(PHPMailer $PHPMailer, $configuration)
 	{
 		$this->PHPMailer = $PHPMailer;
